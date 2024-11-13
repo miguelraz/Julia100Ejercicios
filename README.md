@@ -1,12 +1,14 @@
 [![Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FRoyiAvital%2FStackExchangeCodes&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitors+%28Daily+%2F+Total%29&edge_flat=false)](https://github.com/RoyiAvital/Julia100Exercises)
 
-# 100 Julia Exercises with Solutions
+# 100 Ejercicios de Julia con soluciones
 
 A set of introductory exercises for Julia. Based on [100 NumPy Exercises](https://github.com/rougier/numpy-100).
+Una serie de ejercicios introductorios a Julia. Basado en [100 NumPy Exercises](https://github.com/rougier/numpy-100).
+
 
 In order to generate this file:
-1. Clone the repository (Or download).
-2. Activate and instantiate the project.
+1. Clone el repositorio (o descargarlo).
+ 2. Active e instanciar el proyecto.
 3. Run:
 ```Julia
 using Literate;
@@ -16,7 +18,7 @@ Literate.markdown("Julia100Exercises.jl", name = "README", execute = true, flavo
 **Remark**: Tested with Julia `1.8.2`.
 
 **To Do**:
-1. Reevaluate the difficulty level of each question.
+1. Reevaluar el nivel de dificultad de cada pregunta.
 
 ````julia
 using Literate;
@@ -30,33 +32,34 @@ using Tullio;
 using StaticKernels;
 ````
 
-## Question 001
-Import the `LinearAlgebra` package under the name `LA`. (★☆☆)
+## Pregunta 001
+
+Importe el paquete `LinearAlgebra` bajo el nombre` LA`. (★ ☆☆)
 
 ````julia
 import LinearAlgebra as LA;
 ````
 
-## Question 002
+## Pregunta 002
+
 Print the version of Julia. (★☆☆)
 
 ````julia
 println(VERSION);
 ````
 
-````
+````julia
 1.8.2
-
 ````
 
-## Question 003
-Create a non initialized vector of size 10 of `Float64`. (★☆☆)
+## Pregunta 003
+Cree un vector no inicializado de tamaño 10 de `Float64`. (★ ☆☆)
 
 ````julia
 vA = Vector{Float64}(undef, 10)
 ````
 
-````
+````julia-repl
 10-element Vector{Float64}:
  0.0
  1.314224183e-315
@@ -70,7 +73,7 @@ vA = Vector{Float64}(undef, 10)
  0.0
 ````
 
-Which is equivalent of
+Que es equivalente a
 
 ````julia
 vA = Array{Float64, 1}(undef, 10)
@@ -90,8 +93,9 @@ vA = Array{Float64, 1}(undef, 10)
  0.0
 ````
 
-## Question 004
-Find the memory size of any array. (★☆☆)
+## Pregunta 004
+
+Encuentre el tamaño de la memoria de cualquier matriz. (★☆☆)
 
 ````julia
 sizeof(vA)
@@ -101,8 +105,9 @@ sizeof(vA)
 80
 ````
 
-## Question 005
-Show the documentation of the `+` (Add) method. (★☆☆)
+## Pregunta 005
+
+Muestre la documentación del método `+` (add). (★☆☆)
 
 ````julia
 @doc +
@@ -112,7 +117,7 @@ Show the documentation of the `+` (Add) method. (★☆☆)
 +(x, y...)
 ```
 
-Addition operator. `x+y+z+...` calls this function with all arguments, i.e. `+(x, y, z, ...)`.
+Operador de adición. `x+y+z+...` llama a esta función con todos los argumentos, es decir, `+(x, y, z, ...)`.
 
 # Examples
 
@@ -128,11 +133,11 @@ julia> +(1, 20, 4)
 dt::Date + t::Time -> DateTime
 ```
 
-The addition of a `Date` with a `Time` produces a `DateTime`. The hour, minute, second, and millisecond parts of the `Time` are used along with the year, month, and day of the `Date` to create the new `DateTime`. Non-zero microseconds or nanoseconds in the `Time` type will result in an `InexactError` being thrown.
+La adición de una `Date` con un `Time` produce una `DateTime`. Las partes de la hora, el minuto, la segunda y el milisegundo del 'Tiempo' se usan junto con el año, el mes y el día de la 'Fecha' para crear el nuevo 'DateTime`. Microsegundos o nanosegundos distintos de cero en el tipo `Time` darán como resultado un 'InexactError` lanzado.
 
+## Pregunta 006
 
-## Question 006
-Create a vector of zeros of size 10 but the fifth value which is 1. (★☆☆)
+Cree un vector de ceros de tamaño 10 pero que el quinto valor sea 1. (★☆☆)
 
 ````julia
 vA = zeros(10);
@@ -154,8 +159,9 @@ vA
  0.0
 ````
 
-## Question 007
-Create a vector with values ranging from 7 to 12. (★☆☆)
+## Pregunta 007
+
+Cree un vector con los valores enteros entre 7 y 12. (★ ☆☆)
 
 ````julia
 vA = 7:12
@@ -181,8 +187,9 @@ vA = collect(7:12)
  12
 ````
 
-## Question 008
-Reverse a vector (first element becomes last). (★☆☆)
+## Pregunta 008
+
+Revertir un vector (el primer elemento se convierte en el último). (★☆☆)
 
 ````julia
 vA = collect(1:3);
@@ -197,13 +204,13 @@ vB
  1
 ````
 
-Alternative 001:
+Alternativa 001:
 
 ````julia
 vB = reverse(vA);
 ````
 
-Alternative 002 (In place):
+Alternativa 002 ("In place"/sin usar memoria adicional):
 
 ````julia
 reverse!(vA);
@@ -217,8 +224,9 @@ vA
  1
 ````
 
-## Question 009
-Create a `3x3` matrix with values ranging from 0 to 8. (★☆☆)
+## Pregunta 009
+
+Cree una matriz `3x3` con valores los valores del 0 a 8. (★ ☆☆)
 
 ````julia
 mA = reshape(0:8, 3, 3)
@@ -231,15 +239,16 @@ mA = reshape(0:8, 3, 3)
  2  5  8
 ````
 
-Another way would be:
+Otra manera es:
 
 ````julia
 mA = Matrix{Float64}(undef, 3, 3);
 mA[:] = 0:8;
 ````
 
-## Question 010
-Find indices of non zero elements from `[1, 2, 0, 0, 4, 0]`. (★☆☆)
+## Pregunta 010
+
+Encuentre los índices de elementos no cero de `[1, 2, 0, 0, 4, 0]`. (★ ☆☆)
 
 ````julia
 findall(!iszero, [1, 2, 0, 0, 4, 0])
@@ -252,8 +261,9 @@ findall(!iszero, [1, 2, 0, 0, 4, 0])
  5
 ````
 
-## Question 011
-Create a 3x3 identity matrix. (★☆☆)
+## Pregunta 011
+
+Cree una matriz de identidad 3x3. (★ ☆☆)
 
 ````julia
 mA = I(3)
@@ -266,7 +276,7 @@ mA = I(3)
  ⋅  ⋅  1
 ````
 
-An alternative method (Explicit matrix) would be:
+Un método alternativo (matriz explícita) sería:
 
 ````julia
 mA = Matrix(I, 3, 3) #<! For Float64: Matrix{Float64}(I, 3, 3)
@@ -279,8 +289,9 @@ mA = Matrix(I, 3, 3) #<! For Float64: Matrix{Float64}(I, 3, 3)
  0  0  1
 ````
 
-## Question 012
-Create a `2x2x2` array with random values. (★☆☆)
+## Pregunta 012
+
+Cree una matriz `2x2x2` con valores aleatorios. (★ ☆☆)
 
 ````julia
 mA = randn(2, 2, 2)
@@ -297,8 +308,9 @@ mA = randn(2, 2, 2)
  -0.839961  0.218133
 ````
 
-## Question 013
-Create a `5x5` array with random values and find the minimum and maximum values. (★☆☆)
+## Pregunta 013
+
+Cree una matriz `5x5` con valores aleatorios y encuentre los valores mínimos y máximos. (★ ☆☆)
 
 ````julia
 mA = rand(5, 5);
@@ -317,14 +329,15 @@ maxVal = maximum(mA)
 0.9708814560256962
 ````
 
-Using `extrema()` one could get both values at once:
+Usando `extrema ()` se podría obtener ambos valores a la vez:
 
 ````julia
 minVal, maxVal = extrema(mA);
 ````
 
-## Question 014
-Create a random vector of size 30 and find the mean value. (★☆☆)
+## Pregunta 014
+
+Cree un vector aleatorio de tamaño 30 y encuentre el valor promedio. (★ ☆☆)
 
 ````julia
 meanVal = mean(randn(30))
@@ -334,13 +347,14 @@ meanVal = mean(randn(30))
 -0.04218053798839749
 ````
 
-## Question 015
-Create a 2d array with 1 on the border and 0 inside. (★☆☆)
+## Pregunta 015
+
+Cree una matriz 2D con 1 en el borde y 0 en el interior. (★ ☆☆)
 
 ````julia
 mA = zeros(4, 4);
-mA[:, [1, end]] .= 1;
-mA[[1, end], :] .= 1;
+mA[:, [begin, end]] .= 1;
+mA[[begin, end], :] .= 1;
 mA
 ````
 
@@ -352,21 +366,21 @@ mA
  1.0  1.0  1.0  1.0
 ````
 
-An alternative way (Different dimensions):
+Una forma alternativa (diferentes dimensiones):
 
 ````julia
 mA = ones(4, 5);
 mA[2:(end - 1), 2:(end - 1)] .= 0;
 ````
 
-Using one line code:
+Usando una línea de código:
 
 ````julia
 mA = zeros(4, 5);
 mA[[LinearIndices(mA)[cartIdx] for cartIdx in CartesianIndices(mA) if (any(cartIdx.I .== 1) || cartIdx.I[1] == size(mA, 1) || cartIdx.I[2] == size(mA, 2))]] .= 1;
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 numRows = 5;
@@ -374,8 +388,9 @@ numCols = 4;
 mA = Int[ii ∈ (1, numRows) || jj ∈ (1, numCols) for ii in 1:numRows, jj in 1:numCols];
 ````
 
-## Question 016
-Add a border of zeros around the array. (★☆☆)
+## Pregunta 016
+
+Agregue un borde de ceros alrededor de la matriz. (★ ☆☆)
 
 ````julia
 mB = zeros(size(mA) .+ 2);
@@ -394,8 +409,9 @@ mB
  0.0  0.0  0.0  0.0  0.0  0.0
 ````
 
-## Question 017
-Evaluate the following expressions. (★☆☆)
+## Pregunta 017
+
+Evaluar las siguientes expresiones. (★ ☆☆)
 
 ````julia
 0 * NaN
@@ -445,8 +461,9 @@ false
 false
 ````
 
-## Question 018
-Create a `5x5` matrix with values `[1, 2, 3, 4]` just below the diagonal. (★☆☆)
+## Pregunta 018
+
+Cree una matriz `5x5` con valores `[1, 2, 3, 4]` justo debajo de la diagonal. (★ ☆☆)
 
 ````julia
 mA = diagm(5, 5, -1 => 1:4)
@@ -461,8 +478,9 @@ mA = diagm(5, 5, -1 => 1:4)
  0  0  0  4  0
 ````
 
-## Question 019
-Create a `8x8` matrix and fill it with a checkerboard pattern. (★☆☆)
+## Pregunta 019
+
+Cree una matriz `8x8` y llénela con un patrón de tablero de ajedrez. (★ ☆☆)
 
 ````julia
 mA = zeros(8, 8);
@@ -483,14 +501,15 @@ mA
  1.0  0.0  1.0  0.0  1.0  0.0  1.0  0.0
 ````
 
-By Tomer Arnon (https://github.com/tomerarnon):
+Por Tomer Arnon (https://github.com/tomerarnon):
 
 ````julia
 mA = Int[isodd(ii + jj) for ii in 1:8, jj in 1:8];
 ````
 
-## Question 020
-Convert the linear index 100 to a _Cartesian Index_ of a size `(6,7,8)`. (★☆☆)
+## Pregunta 020
+
+Convierta el índice lineal 100 a un _CartesianIndex_ de tamaño `(6,7,8)`. (★ ☆☆)
 
 ````julia
 mA = rand(6, 7, 8);
@@ -502,8 +521,9 @@ mA[cartIdx] == mA[100]
 true
 ````
 
-## Question 021
-Create a checkerboard `8x8` matrix using the `repeat()` function. (★☆☆)
+## Pregunta 021
+
+Cree una matriz `8x8` 8x8` usando la función `repeat()`.(★ ☆☆)
 
 ````julia
 mA = repeat([0 1; 1 0], 4, 4)
@@ -521,8 +541,9 @@ mA = repeat([0 1; 1 0], 4, 4)
  1  0  1  0  1  0  1  0
 ````
 
-## Question 022
-Normalize a `4x4` random matrix. (★☆☆)
+## Pregunta 022
+
+Normalice una matriz aleatoria de `4x4`. (★ ☆☆)
 
 ````julia
 mA = rand(4, 4);
@@ -537,8 +558,9 @@ mA .= (mA .- mean(mA)) ./ std(mA) #<! Pay attention that `@.` will yield error (
  -0.0565761  0.0550669   0.711533  -1.61812
 ````
 
-## Question 023
-Create a custom type that describes a color as four unsigned bytes (`RGBA`). (★☆☆)
+## Pregunta 023
+
+Cree un _struct_ que describa un color como cuatro bytes sin signo (`RGBA`). (★ ☆☆)
 
 ````julia
 struct sColor
@@ -555,8 +577,9 @@ sMyColor = sColor(rand(UInt8, 4)...)
 Main.var"##312".sColor(0xb0, 0xae, 0x35, 0x81)
 ````
 
-## Question 024
-Multiply a `2x4` matrix by a `4x3` matrix. (★☆☆)
+## Pregunta 024
+
+Multiplique una matriz de `2x4` por una matriz de `4x3`. (★ ☆☆)
 
 ````julia
 mA = rand(2, 4) * randn(4, 3)
@@ -568,8 +591,9 @@ mA = rand(2, 4) * randn(4, 3)
  -0.745242   0.188422  -3.19746
 ````
 
-## Question 025
-Given a 1D array, negate all elements which are between 3 and 8, in place. (★☆☆)
+## Pregunta 025
+
+Dada una matriz 1D, niegue todos los elementos que están entre 3 y 8, en su lugar (in place). (★ ☆☆)
 
 ````julia
 vA = rand(1:10, 8);
@@ -588,7 +612,7 @@ map!(x -> ((x > 3) && (x < 8)) ? -x : x, vA, vA)
  -4
 ````
 
-Julia allows Math like notation as well (See `Q0027`):
+Julia también permite la notación matemáticas (ver `P0027`):
 
 ````julia
 vA = rand(1:10, 8);
@@ -607,14 +631,15 @@ map!(x -> 3 < x < 8 ? -x : x, vA, vA)
  -5
 ````
 
-Using logical indices one could use:
+Usando índices lógicos:
 
 ````julia
 vA[3 .< vA .< 8] .*= -1;
 ````
 
-## Question 026
-Sum the array `1:4` with initial value of -10. (★☆☆)
+## Pregunta 026
+
+Sume la matriz `1:4` con valor inicial de -10. (★ ☆☆)
 
 ````julia
 sum(1:4, init = -10)
@@ -624,8 +649,10 @@ sum(1:4, init = -10)
 0
 ````
 
-## Question 027
-Consider an integer vector `vZ` validate the following expressions. (★☆☆)
+## Pregunta 027
+
+Considere un vector de enteros `vz` y validar las siguientes expresiones. (★ ☆☆)
+
 ```julia
 vZ .^ vZ
 2 << vZ >> 2
@@ -701,8 +728,9 @@ vZ < vZ > vZ
 false
 ````
 
-## Question 028
-Evaluate the following expressions. (★☆☆)
+## Pregunta 028
+
+Evaluar las siguientes expresiones. (★ ☆☆)
 
 ````julia
 [0] ./ [0]
@@ -739,8 +767,10 @@ InexactError(:Int64, Int64, NaN)
 
 ````
 
-## Question 029
+## Pregunta 029
+
 Round away from zero a float array. (★☆☆)
+Redondear una matriz de flotantes `vA` lejos del 0. (★☆☆)
 
 ````julia
 vA = randn(10);
@@ -761,8 +791,9 @@ map(x -> x > 0 ? ceil(x) : floor(x), vA)
   1.0
 ````
 
-## Question 030
-Find common values between two arrays. (★☆☆)
+## Pregunta 030
+
+Encuentre los valores comunes entre dos matrices. (★ ☆☆)
 
 ````julia
 vA = rand(1:10, 6);
@@ -777,13 +808,15 @@ vA[findall(in(vB), vA)]
  5
 ````
 
-## Question 031
-Suppress Julia's warnings. (★☆☆)
+## Pregunta 031
 
-One could use [Suppressor.jl](https://github.com/JuliaIO/Suppressor.jl).
+Suprimir las advertencias ("warnings") de Julia. (★ ☆☆)
 
-## Question 032
-Compare `sqrt(-1)` and `sqrt(-1 + 0im)`. (★☆☆)
+Uno puede usar [Suppressor.jl](https://github.com/JuliaIO/Suppressor.jl).
+
+## Pregunta 032
+
+Compare `sqrt(-1)` y `sqrt(-1 + 0im)`. (★ ☆☆)
 
 ````julia
 try
@@ -806,8 +839,9 @@ sqrt(-1 + 0im)
 0.0 + 1.0im
 ````
 
-## Question 033
-Display yesterday, today and tomorrow's date. (★☆☆)
+## Pregunta 033
+
+Muestra la fecha de ayer, hoy y de mañana usando `Dates`. (★ ☆☆)
 
 ````julia
 println("Yesterday: $(today() - Day(1))");
@@ -822,8 +856,9 @@ Tomorrow: 2022-10-28
 
 ````
 
-## Question 034
-Display all the dates corresponding to the month of July 2016. (★★☆)
+## Pregunta 034
+
+Muestre todas las fechas correspondientes al mes de julio de 2016. (★★ ☆)
 
 ````julia
 collect(Date(2016,7,1):Day(1):Date(2016,7,31))
@@ -864,8 +899,9 @@ collect(Date(2016,7,1):Day(1):Date(2016,7,31))
  2016-07-31
 ````
 
-## Question 035
-Compute `((mA + mB) * (-mA / 2))` in place. (★★☆)
+## Pregunta 035
+
+Calcule `((mA + mB) * (-mA / 2))` de manera in place. (★★☆)
 
 ````julia
 mA = rand(2, 2);
@@ -879,20 +915,21 @@ mA .= ((mA .+ mB) .* (.-mA ./ 2))
  -0.510546  -0.444504
 ````
 
-Using the dot macro:
+Usando el macro "punto":
 
 ````julia
 @. mA = ((mA + mB) * (-mA / 2));
 ````
 
-## Question 036
-Extract the integer part of a random array of positive numbers using 4 different methods. (★★☆)
+## Pregunta 036
+
+Extraiga la parte entera de una matriz aleatoria de números positivos utilizando 4 métodos diferentes. (★★ ☆)
 
 ````julia
 mA = 5 * rand(3, 3);
 ````
 
-Option 1:
+Opción 1:
 
 ````julia
 floor.(mA)
@@ -905,7 +942,8 @@ floor.(mA)
  0.0  3.0  3.0
 ````
 
-Option 2:
+Opción2:
+
 
 ````julia
 round.(mA .- 0.5) #<! Generates -0.0 for numbers smaller than 0.5
@@ -918,7 +956,7 @@ round.(mA .- 0.5) #<! Generates -0.0 for numbers smaller than 0.5
  -0.0  3.0  3.0
 ````
 
-Option 3:
+Opción 3:
 
 ````julia
 mA .÷ 1
@@ -931,7 +969,7 @@ mA .÷ 1
  0.0  3.0  3.0
 ````
 
-Option 4:
+Opción 4:
 
 ````julia
 mA .- rem.(mA, 1)
@@ -944,8 +982,9 @@ mA .- rem.(mA, 1)
  0.0  3.0  3.0
 ````
 
-## Question 037
-Create a `5x5` matrix with row values ranging from 0 to 4. (★★☆)
+## Pregunta 037
+
+Cree una matriz `5x5` con valores de columna que van de 0 a 4. (★★ ☆)
 
 ````julia
 mA = repeat(reshape(0:4, 1, 5), 5, 1)
@@ -960,14 +999,15 @@ mA = repeat(reshape(0:4, 1, 5), 5, 1)
  0  1  2  3  4
 ````
 
-One could also generate _row like_ range using tranpose:
+También se podría generar el rango de fila usando _transpose_ `'`:
 
 ````julia
 mA = repeat((0:4)', 5, 1);
 ````
 
-## Question 038
-Generate an array using a generator of 10 numbers. (★☆☆)
+## Pregunta 038
+
+Genere una matriz de 10 números utilizando un generador. (★ ☆☆)
 
 ````julia
 vA = collect(x for x in 1:10)
@@ -987,14 +1027,15 @@ vA = collect(x for x in 1:10)
  10
 ````
 
-In Julia the result of collect can be achieved directly using _Array Comprehension_:
+En Julia, el resultado de `collect` se puede lograr directamente utilizando una _Array Comprehension_ / _comprehensión de arreglo_:
 
 ````julia
 vA = [x for x in 1:10];
 ````
 
-## Question 039
-Create a vector of size 10 with values ranging from 0 to 1, both excluded. (★★☆)
+## Pregunta 039
+
+Cree un vector de tamaño 10 con valores que varían de 0 a 1, ambos excluidos. (★★ ☆)
 
 ````julia
 vA = LinRange(0, 1, 12)[2:(end - 1)]
@@ -1005,8 +1046,9 @@ vA = LinRange(0, 1, 12)[2:(end - 1)]
  0.0909091,0.181818,0.272727,0.363636,…,0.636364,0.727273,0.818182,0.909091
 ````
 
-## Question 040
-Create a random vector of size 10 and sort it. (★★☆)
+## Pregunta 040
+
+Cree un vector aleatorio de tamaño 10 y ordénelo. (★★ ☆)
 
 ````julia
 vA = rand(1:10, 10);
@@ -1027,8 +1069,9 @@ sort(vA) #<! Use `sort!()` for inplace sorting
  10
 ````
 
-## Question 041
-Implement the `sum()` function manually. (★★☆)
+## Pregunta 041
+
+Implemente la función `sum()` manualmente. (★★ ☆)
 
 ````julia
 vA = rand(100);
@@ -1050,8 +1093,9 @@ MySum(vA)
 51.34991384741698
 ````
 
-## Question 042
-Check for equality of 2 arrays. (★★☆)
+## Pregunta 042
+
+Verifique la igualdad de 2 matrices. (★★ ☆)
 
 ````julia
 vA = rand(10);
@@ -1064,13 +1108,14 @@ all(vA .== vB)
 false
 ````
 
-## Question 043
-Make an array immutable (Read only). (★★☆)
+## Pregunta 043 TODO: Update
 
-This is a work in progress for Julia at in [Issue 31630](https://github.com/JuliaLang/julia/pull/31630).
+Haga una matriz inmutable (solo puede ser leída). (★★ ☆)
 
-## Question 044
-Consider a random `10x2` matrix representing cartesian coordinates, convert them to polar coordinates. (★★☆)
+
+## Pregunta 044
+
+Considere una matriz `10x2` aleatoria que representa las coordenadas cartesianas, conviértalas en coordenadas polares. (★★ ☆)
 
 ````julia
 mA = rand(10, 2);
@@ -1094,20 +1139,21 @@ mB = [ConvToPolar(vX) for vX in eachrow(mA)]
  [1.044698619009772, 0.8754548962664869]
 ````
 
-In order to have the same output size:
+Para tener el mismo tamaño de salida:
 
 ````julia
 mC = reduce(hcat, mB)';
 ````
 
-## Question 045
-Create random vector of size 10 and replace the maximum value by 0. (★★☆)
+## Pregunta 045
+
+Cree un vector aleatorio de tamaño 10 y reemplace el valor máximo por 0. (★★ ☆)
 
 ````julia
 vA = randn(10);
 ````
 
-In case of a single maximum or all different values:
+En caso de un solo máximo o todos los valores diferentes:
 
 ````julia
 vA[argmax(vA)] = 0;
@@ -1128,15 +1174,16 @@ vA
   0.8756142494364301
 ````
 
-General solution:
+Solución general:
 
 ````julia
 maxVal = maximum(vA);
 vA .= (valA == maxVal ? 0 : valA for valA in vA); #<! Non allocating generator by using `.=`
 ````
 
-## Question 046
-Create a a grid of `x` and `y` coordinates covering the `[0, 1] x [0, 1]` area. (★★☆)
+## Pregunta 046
+
+Cree una cuadrícula de coordenadas `x` y `y` que cubran el área `[0, 1] x [0, 1]`. (★★ ☆)
 
 ````julia
 numGridPts = 5;
@@ -1144,7 +1191,7 @@ vX = LinRange(0, 1, numGridPts);
 vY = LinRange(0, 1, numGridPts);
 MeshGrid = (vX, vY) -> ([x for _ in vY, x in vX], [y for y in vY, _ in vX]);
 
-mX, mY = MeshGrid(vX, vY); #<! See https://discourse.julialang.org/t/48679
+mX, mY = MeshGrid(vX, vY); #<! Ver https://discourse.julialang.org/t/48679
 @show mX
 ````
 
@@ -1170,14 +1217,15 @@ mX, mY = MeshGrid(vX, vY); #<! See https://discourse.julialang.org/t/48679
  1.0   1.0   1.0   1.0   1.0
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 mXY = [(ii, jj) for ii in 0:0.25:1, jj in 0:0.25:1]; #<! Also `tuple.(0:0.25:1, (0:0.25:1)')`
 ````
 
-## Question 047
-Given two vectors, `vX` and `vY`, construct the Cauchy matrix `mC`: `(Cij = 1 / (xi - yj))`. (★★☆)
+## Pregunta 047
+
+Dados dos vectores, `vx` y` vy`, construye la matriz de Cauchy `mc`:` (c_ij = 1 / (xi - yj)) `. (★★ ☆)
 
 ````julia
 vX = rand(5);
@@ -1195,8 +1243,9 @@ mC = 1 ./ (vX .- vY')
   2.36374  1.45768   2.46193  1.56164  18.4072
 ````
 
-## Question 048
-Print the minimum and maximum representable value for each Julia scalar type. (★★☆)
+## Pregunta 048
+
+Imprima el valor mínimo y máximo representable para cada tipo escalar Julia. (★★ ☆)
 
 ````julia
 vT = [UInt8 UInt16 UInt32 UInt64 Int8 Int16 Int32 Int64 Float16 Float32 Float64]
@@ -1233,8 +1282,9 @@ Inf
 
 ````
 
-## Question 049
-Print all the values of an array. (★★☆)
+## Pregunta 049
+
+Imprima todos los valores de una matriz. (★★ ☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1245,8 +1295,9 @@ print(mA);
 [0.6807535316053605 0.849791747148149 0.32690265736495716; 0.9773227682466125 0.5276250185081583 0.9071015474523568; 0.3192975731085147 0.009594822627075117 0.21726819354916904]
 ````
 
-## Question 050
-Find the closest value to a given scalar in a vector. (★★☆)
+## Pregunta 050
+
+Encuentre el valor más cercano a un escalar dado en un vector. (★★ ☆)
 
 ````julia
 inputVal = 0.5;
@@ -1259,22 +1310,23 @@ vA[argmin(abs.(vA .- inputVal))]
 0.5023858297186229
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
-function ClosestValue(vA::Vector{T}, inputVal::T) where{T <: Number}
+function MasCercano(vA::Vector{T}, inputVal::T) where{T <: Number}
     return argmin(y -> abs(y - inputVal), vA);
 end
 
-ClosestValue(vA, inputVal)
+MasCercano(vA, inputVal)
 ````
 
 ````
 0.5023858297186229
 ````
 
-## Question 051
-Create a structured array representing a position `(x, y)` and a color `(r, g, b)`. (★★☆)
+## Pregunta 051
+
+Cree una matriz estructurada que represente una posición `(x, y)` y un color `(r, g, b)`. (★★ ☆)
 
 ````julia
 struct sPosColor
@@ -1291,8 +1343,9 @@ maxVal      = typemax(UInt32);
 vMyColor    = [sPosColor(rand(1:maxVal, 2)..., rand(UInt8, 4)...) for _ in 1:numPixels];
 ````
 
-## Question 052
-Consider a random vector with shape `(5, 2)` representing coordinates, find the distances matrix `mD`: $ {D}_{i, j} = {\left\| {x}_{i} - {x}_{j} \right\|}_{2} $. (★★☆)
+## Pregunta 052
+
+Considere un vector aleatorio de forma `(5, 2)` que representa coordenadas. Encuentre la matriz de distancias `mD`: ${D}_{i, j} = {\left\| {x}_{i} - {x}_{j}\right\|}_{2} $. (★★ ☆)
 
 ````julia
 mX = rand(5, 2);
@@ -1310,8 +1363,9 @@ mD #<! Apply `sqrt.()` for the actual norm
   0.525945     0.136451   0.814356     0.135001  -4.44089e-16
 ````
 
-## Question 053
-Convert a float (32 bits) array into an integer (32 bits) in place. (★★☆)
+## Pregunta 053
+
+Convierta una matriz flotante (32 bits) en un entero (32 bits) en su lugar. (★★ ☆)
 
 ````julia
 vA = 9999 .* rand(Float32, 5);
@@ -1328,7 +1382,7 @@ vB = reinterpret(Int32, vA); #<! Creates a view
  9953
 ````
 
-The above is equivalent of:
+Lo anterior es equivalente a:
 ```julia
 for ii in eachindex(vB)
     vB[ii] = trunc(Int32, vA[ii]);
@@ -1336,8 +1390,9 @@ end
 vB
 ```
 
-## Question 054
-Read the following file (`Q0054.txt`). (★★☆)
+## Pregunta 054
+
+Lea el siguiente archivo: (`Q0054.txt`). (★★☆)
 ```
 1, 2, 3, 4, 5
 6,  ,  , 7, 8
@@ -1355,8 +1410,9 @@ mA = readdlm("Q0054.txt", ',')
   " "   "  "  9      10  11
 ````
 
-## Question 055
-Enumerate array in a loop. (★★☆)
+## Pregunta 055
+
+Enumerar una matriz con un bucle. (★★☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1389,8 +1445,9 @@ end
 
 ````
 
-## Question 056
-Generate a generic 2D Gaussian like array with `μ = 0`, `σ = 1` and indices over `{-5, -4, ..., 0, 1, ..., 5}`. (★★☆)
+## Pregunta 056
+
+Genere una matriz Gaussiana 2D genérica con `μ = 0`, `σ = 1` e índices sobre `{-5, -4, ..., 0, 1, ..., 5}`. (★★ ☆)
 
 ````julia
 vA = -5:5;
@@ -1413,29 +1470,31 @@ heatmap(mG)
        1        11               
 ````
 
-Using the separability of the Gaussian function:
+Usando la separabilidad de la función gaussiana:
 
 ````julia
 vG = (1 / (sqrt(2 * pi) * σ)) .* exp.(-0.5 .* (((vA .- μ) .^ 2) / (σ * σ)));
 mG = vG * vG';
 ````
 
-## Question 057
-Place `5` elements in a `5x5` array randomly. (★★☆)
+## Pregunta 057
+
+Coloque 5 elementos en una matriz `5x5` al azar. (★★ ☆)
 
 ````julia
 mA = rand(5, 5);
 mA[rand(1:25, 5)] = rand(5);
 ````
 
-Another option which avoids setting into the same indices:
+Otra opción que evita repetir índices:
 
 ````julia
 mA[randperm(25)[1:5]] = rand(5);
 ````
 
-## Question 058
-Subtract the mean of each row of a matrix. (★★☆)
+## Pregunta 058
+
+Resta la media de cada fila de una matriz. (★★ ☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1448,8 +1507,9 @@ mean(mA, dims = 1)
  0.261517  -0.0218978  -0.23962
 ````
 
-## Question 059
-Sort an array by a column. (★★☆)
+## Pregunta 059
+
+Ordene una matriz por una columna. (★★ ☆)
 
 ````julia
 colIdx = 2;
@@ -1465,14 +1525,15 @@ mA[sortperm(mA[:, colIdx]), :]
  0.271644  0.722126  0.182457
 ````
 
-Using `sortslices()`:
+Usando `sortslices()`:
 
 ````julia
 sortslices(mA, dims = 1, by = x -> x[colIdx]);
 ````
 
-## Question 060
-Tell if a given 2D array has null (All zeros) columns. (★★☆)
+## Pregunta 060
+
+Encontrar si una matriz 2D dada tiene columnas nulas (todas ceros). (★★ ☆)
 
 ````julia
 mA = rand(0:1, 3, 9);
@@ -1483,8 +1544,9 @@ any(all(iszero.(mA), dims = 1))
 false
 ````
 
-## Question 061
-Find the 2nd nearest value from a given value in an array. (★★☆)
+## Pregunta 061
+
+Encuentre el segundo valor más cercano de un valor dado en una matriz. (★★ ☆)
 
 ````julia
 inputVal = 0.5;
@@ -1497,7 +1559,7 @@ vA[sortperm(abs.(vA .- inputVal))[2]]
 0.5947029703004421
 ````
 
-Alternative way (More efficient)
+Alternative form (more efficient)
 
 ````julia
 closeFirst  = Inf;
@@ -1505,7 +1567,7 @@ closeSecond = Inf;
 closeFirstIdx  = 0;
 closeSecondIdx = 0;
 
-# Using `global` for scope in Literate
+# usando scope/alcance global en Literate.jl:
 for (elmIdx, elmVal) in enumerate(abs.(vA .- inputVal))
     if (elmVal < closeFirst)
         global closeSecond = closeFirst;
@@ -1525,7 +1587,7 @@ vA[closeSecondIdx] == vA[sortperm(abs.(vA .- inputVal))[2]]
 true
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 vA[partialsortperm(abs.(vA .- inputVal), 2)]
@@ -1535,8 +1597,9 @@ vA[partialsortperm(abs.(vA .- inputVal), 2)]
 0.5947029703004421
 ````
 
-## Question 062
-Considering two arrays with shape `(1, 3)` and `(3, 1)`, Compute their sum using an iterator. (★★☆)
+## Pregunta 062
+
+Teniendo en cuenta dos matrices con forma `(1, 3)` y `(3, 1)`, calcule su suma usando un iterador. (★★ ☆)
 
 ````julia
 vA = rand(1, 3);
@@ -1549,13 +1612,15 @@ sum(aVal + bVal for aVal in vA, bVal in vB)
 11.149909948305584
 ````
 
-## Question 063
-Create an array class that has a name attribute. (★★☆)
+## Pregunta 063
 
-One could use `NamedArrays.jl` or `AxisArrays.jl`.
+Cree una tipo de matriz que tenga un atributo de nombre. (★★ ☆)
 
-## Question 064
-Given a vector, add `1` to each element indexed by a second vector (Be careful with repeated indices). (★★★)
+Puedes usar `NamedArrays.jl` o `AxisArrays.jl`.
+
+## Pregunta 064
+
+Dado un vector, agregue `1` a cada elemento indexado por un segundo vector (tenga cuidado con los índices repetidos). (★★★)
 
 ````julia
 vA = rand(1:10, 5);
@@ -1563,7 +1628,7 @@ vB = rand(1:5, 3);
 
 println(vA);
 
-# Julia is very efficient with loops
+# Julia es muy eficiente con los bucles!
 for bIdx in vB
     vA[bIdx] += 1;
 end
@@ -1577,8 +1642,9 @@ println(vA);
 
 ````
 
-## Question 065
-Accumulate elements of a vector `X` to an array `F` based on an index list `I`. (★★★)
+## Pregunta 065
+
+Acumular elementos de un vector `x` a una matriz `f` basada en una lista de índices 'I'. (★★★)
 
 ````julia
 vX = rand(1:5, 10);
@@ -1603,10 +1669,11 @@ vF: [0.0, 5.0, 5.0, 0.0, 2.0, 3.0, 0.0, 0.0, 0.0, 5.0, 10.0, 7.0]
 
 ````
 
-One could also use `counts()` from `StatsBase.jl`.
+También se podría usar `counts()` de `StatsSase.jl`.
 
-## Question 066
-Considering an image of size `w x h x 3` image of type `UInt8`, compute the number of unique colors. (★★☆)
+## Pregunta 066
+
+Teniendo en cuenta una imagen de la imagen de tamaño `w x h x 3` del tipo `UInt8`, calcule el número de colores únicos. (★★ ☆)
 
 ````julia
 mI = rand(UInt8, 1000, 1000, 3);
@@ -1619,7 +1686,7 @@ print("Number of Unique Colors: $numColors");
 Number of Unique Colors: 970711
 ````
 
-Another option:
+Otra opción:
 
 ````julia
 numColors = length(unique([UInt32(iPx[1]) + UInt32(iPx[2]) << 8 + UInt32(iPx[3]) << 16 for iPx in eachrow(reshape(mI, :, 3))]));
@@ -1630,7 +1697,7 @@ print("Number of Unique Colors: $numColors");
 Number of Unique Colors: 970711
 ````
 
-Simpler way to slice a pixel:
+Forma más simple de slicear un píxel:
 
 ````julia
 numColors = length(unique([UInt32(mI[ii, jj, 1]) + UInt32(mI[ii, jj, 2]) << 8 + UInt32(mI[ii, jj, 3]) << 16 for ii in 1:size(mI, 1), jj in 1:size(mI, 2)]));
@@ -1641,8 +1708,9 @@ print("Number of Unique Colors: $numColors");
 Number of Unique Colors: 970711
 ````
 
-## Question 067
-Considering a four dimensions array, get sum over the last two axis at once. (★★★)
+## Pregunta 067
+
+Teniendo en cuenta una matriz de cuatro dimensiones, obtenga una suma sobre los dos últimos ejes a la vez. (★★★)
 
 ````julia
 mA = rand(2, 2, 2, 2);
@@ -1656,11 +1724,13 @@ sum(reshape(mA, (2, 2, :)), dims = 3)
  2.44291  2.32796
 ````
 
-## Question 068
+## Pregunta 068
+
+Teniendo en cuenta un vector `VA` unidimensional, muestra cómo calcular los promedios de subconjuntos de 'VA` utilizando un vector `VS` del mismo tamaño que describe los índices de subconjunto. (★★★)
 Considering a one dimensional vector `vA`, how to compute means of subsets of `vA` using a vector `vS` of same size describing subset indices. (★★★)
 
 ````julia
-# Bascially extending `Q0065` with another vector of number of additions.
+# Básicamente extendiendo `Q0065` con otro vector de número de adiciones.
 
 vX = rand(1:5, 10);
 vI = rand(1:15, 10);
@@ -1691,8 +1761,9 @@ vF: [0.0, 5.0, 0.0, 0.0, 1.0, 0.0, 4.0, 4.0, 0.0, 1.5, 0.0, 0.0, 2.0, 4.0]
 
 ````
 
-## Question 069
-Get the diagonal of a matrix product. (★★★)
+## Pregunta 069
+
+Obtenga la diagonal de un producto de matriz. (★★★)
 
 ````julia
 mA = rand(5, 7);
@@ -1710,7 +1781,7 @@ vD = [dot(mA[ii, :], mB[:, ii]) for ii in 1:numDiagElements]
  2.2065505485118653
 ````
 
-Alternative way:
+Forma alternativa:
 
 ````julia
 vD = reshape(sum(mA[1:numDiagElements, :]' .* mB[:, 1:numDiagElements], dims = 1), numDiagElements)
@@ -1724,13 +1795,13 @@ vD = reshape(sum(mA[1:numDiagElements, :]' .* mB[:, 1:numDiagElements], dims = 1
  2.2065505485118653
 ````
 
-## Question 070
-Consider the vector `[1, 2, 3, 4, 5]`, build a new vector with 3 consecutive zeros interleaved between each value. (★★★)
+## Pregunta 070
+Considere el vector `[1, 2, 3, 4, 5]`, construya un nuevo vector con 3 ceros consecutivos intercalados entre cada valor. (★★★)
 
 ````julia
 vA = 1:5;
 
-# Since Julia is fast with loops, it would be the easiest choice
+# Dado que Julia es rápida con los bucles, sería la elección más fácil:
 
 numElements = (4 * length(vA)) - 3;
 vB = zeros(Int, numElements);
@@ -1753,8 +1824,9 @@ println(vB);
 
 ````
 
-## Question 071
-Consider an array of dimension `5 x 5 x 3`, mulitply it by an array with dimensions `5 x 5` using broadcasting. (★★★)
+## Pregunta 071
+
+Considere una matriz de dimensión `5 x 5 x 3`, mulitpliquela por una matriz con dimensiones `5 x 5` usando `broadcasting`. (★★★)
 
 ````julia
 mA = rand(5, 5, 3);
@@ -1787,8 +1859,9 @@ mA .* mB #<! Very easy in Julia
  0.118821  0.0130137  0.803091    0.754898   0.0470187
 ````
 
-## Question 072
-Swap two rows of a 2D array. (★★★)
+## Pregunta 072
+
+Intercambie dos filas de una matriz 2D. (★★★)
 
 ````julia
 mA = rand(UInt8, 3, 2);
@@ -1803,8 +1876,9 @@ UInt8[0xbf 0x8f; 0xc7 0x2f; 0xac 0x2a]
 
 ````
 
-## Question 073
-Consider a set of 10 triplets describing 10 triangles (with shared vertices), find the set of unique line segments composing all the triangles. (★★★)
+## Pregunta 073
+
+Considere un conjunto de 10 tripletas que describen 10 triángulos (con vértices compartidos), encuentre el conjunto de segmentos de línea únicos que componen todos los triángulos. (★★★)
 
 ````julia
 mA = rand(0:100, 10, 3); #<! Each row composes 3 veritces ([1] -> [2], [2] -> [3], [3] -> [1])
@@ -1846,8 +1920,9 @@ mC = unique(mC)
  [7, 20]
 ````
 
-## Question 074
-Given a sorted array `vC` that corresponds to a bincount, produce an array `vA` such that `bincount(vA) == vC`. (★★★)
+## Pregunta 074
+
+Dada una matriz ordenada `VC` que corresponde a un bindount, produce una matriz `VA` tal que `bincount(VA) == VC`. (★★★)
 
 ````julia
 vC = rand(0:7, 5);
@@ -1855,7 +1930,7 @@ numElements = sum(vC);
 vA = zeros(Int, numElements);
 
 elmIdx = 1;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for (ii, binCount) in enumerate(vC)
     for jj in 1:binCount
         vA[elmIdx] = ii;
@@ -1864,8 +1939,9 @@ for (ii, binCount) in enumerate(vC)
 end
 ````
 
-## Question 075
-Compute averages using a sliding window over an array. (★★★)
+## Pregunta 075
+
+Calcule promedios utilizando una ventana deslizante sobre una matriz. (★★★)
 
 ````julia
 numElements = 10;
@@ -1877,14 +1953,14 @@ vA = rand(0:3, numElements);
 vB = zeros(numElements - (2 * winRadius));
 
 aIdx = 1 + winRadius;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 1:length(vB)
     vB[ii] = mean(vA[(aIdx - winRadius):(aIdx + winRadius)]); #<! Using integral / running sum it would be faster.
     global aIdx += 1;
 end
 ````
 
-Another method using running sum:
+Otro método que usa la suma corriente:
 
 ````julia
 vC = zeros(numElements - winReach);
@@ -1894,7 +1970,7 @@ sumVal = sum(vA[1:winLength]);
 vC[jj] = sumVal / winLength;
 jj += 1;
 
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 2:(numElements - winReach)
     global sumVal += vA[ii + winReach] - vA[ii - 1];
     vC[jj] = sumVal / winLength;
@@ -1908,8 +1984,9 @@ maximum(abs.(vC - vB)) < 1e-8
 true
 ````
 
-## Question 076
-Consider a one dimensional array `vA`, build a two dimensional array whose first row is `[ vA[0], vA[1], vA[2] ]`  and each subsequent row is shifted by 1. (★★★)
+## Pregunta 076
+
+Considere una matriz unidimensional `VA`, construya una matriz bidimensional cuya primera fila es `[VA [0], VA [1], VA [2]]` y cada fila posterior se desplaza por 1. (★★★)
 
 ````julia
 vA = rand(10);
@@ -1923,8 +2000,9 @@ for ii in 1:numRows
 end
 ````
 
-## Question 077
-Negate a boolean or to change the sign of a float inplace. (★★★)
+## Pregunta 077
+
+Niega un booleano o  multiplica por `-1` para cambiar el valor de un número de manera in place.
 
 ````julia
 vA = rand(Bool, 10);
@@ -1934,12 +2012,13 @@ vA = randn(10);
 vA .*= -1;
 ````
 
-## Question 078
-Consider 2 sets of points `mP1`, `mP2` describing lines (2d) and a point `vP`, how to compute distance from the point `vP` to each line `i`: `[mP1[i, :], mP2[i, :]`. (★★★)
+## Pregunta 078
+
+Considere 2 conjuntos de puntos `mp1`,`mp2` describiendo líneas en 2D y un punto `vp`. Calcula la distancia desde el punto `vP` a cada línea `i`:` [mp1[i,:], mp2[i,:]]`. (★★★)
 
 ````julia
-# See distance of a point from a line in Wikipedia (https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line).
-# Specifically _Line Defined by Two Points_.
+# Ver distancia de un punto desde una línea en Wikipedia (https://en.wikipedia.org/wiki/distance_from_a_point_to_a_line).
+# Específicamente _line definido por dos puntos_.
 
 numLines = 10;
 mP1 = randn(numLines, 2);
@@ -1957,8 +2036,9 @@ Min Distance: 0.42811311783896533
 
 ````
 
-## Question 079
-Consider 2 sets of points `mP1`, `mP2` describing lines (2d) and a set of points `mP`, how to compute distance from the point `vP = mP[j, :]` to each line `i`: `[mP1[i, :], mP2[i, :]`. (★★★)
+## Pregunta 079
+
+Considere 2 conjuntos de puntos `mP1`, `mP2` que describan líneas 2D y un conjunto de puntos `mp`, calcular la distancia desde el punto `vp = mp[j,:]` a cada línea `i`: `[mp1[i,:], mp2[i,:]]`. (★★★)
 
 ````julia
 numLines = 5;
@@ -1985,11 +2065,12 @@ The minimum distance from the 5 -th point: 0.0701461047753776
 
 ````
 
-## Question 080
-Consider an arbitrary 2D array, write a function that extract a subpart with a fixed shape and centered on a given element (Handel out of bounds). (★★★)
+## Pregunta 080
+
+Considere una matriz 2D arbitraria, escriba una función que extraiga una subparte con una forma fija y se centre en un elemento dado (Handel fuera de los límites). (★★★)
 
 ````julia
-# One could use `PaddedViews.jl` to easily solve this.
+# Uno podría usar `paddedviews.jl` para resolverlo fácilmente.
 
 arrayLength = 10;
 winRadius   = 3;
@@ -2000,7 +2081,7 @@ winLength = (2 * winRadius) + 1;
 mB = zeros(winLength, winLength);
 
 verShift = -winRadius;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 1:winLength
     horShift = -winRadius;
     for jj in 1:winLength
@@ -2011,8 +2092,9 @@ for ii in 1:winLength
 end
 ````
 
-## Question 081
-Consider an array `vA = [1, 2, 3, ..., 13, 14]`, generate an array `vB = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], ..., [11, 12, 13, 14]]`. (★★★)
+## Pregunta 081
+
+Considere una matriz `VA = [1, 2, 3, ..., 13, 14]`, genere una matriz `vb = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], ..., [11, 12, 13, 14]] `.. (★★★)
 
 ````julia
 vA = collect(1:14);
@@ -2038,8 +2120,9 @@ vB = [vA[ii:(ii + winReach)] for ii in 1:(length(vA) - winReach)]
  [11, 12, 13, 14]
 ````
 
-## Question 082
-Compute a matrix rank. (★★★)
+## Pregunta 082
+
+Calcule un rango de matriz. (★★★)
 
 ````julia
 numRows = 5;
@@ -2052,7 +2135,8 @@ rank(mA)
 4
 ````
 
-## Question 083
+## Pregunta 083
+
 Find the most frequent value in an array. (★★★)
 
 ````julia
@@ -2063,18 +2147,17 @@ MATLAB Style (Manual loop might be faster)
 
 ````julia
 vB = unique(vA);
-# vB[argmax(sum(vA .== vB', dims = 1)[:])] #<! The input to `argmax()` is a `1 x n` vector, hence squeezed so `argmax()` won't return Cartesian Index.
-vB[argmax(dropdims(sum(vA .== vB', dims = 1), dims = 1))] #<! The input to `argmax()` is a `1 x n` vector, hence squeezed so `argmax()` won't return Cartesian Index.
+# vb[argMax(suma(VA.==vb', dims = 1)[:])] # <! La entrada a `argMax ()` es un vector `1 x n`, por lo tanto, se reduce su ultima dimension, por lo que `argmax()` no devolverá el índice cartesiano.
 ````
 
 ````
 1
 ````
 
-Comparing bits:
+Comparación de bits:
 
-One could convert at the bits level to integers and then use something like `counts()` from `StatsBase.jl`.
-Support to 1:4 bytes of data:
+Uno podría convertirse en el nivel de bits a enteros y luego usar algo como `counts()` de `StatsBase.jl`.
+Con 1 a 4 bytes de datos:
 ```julia
 numBytes = sizeof(vA[1]);
 if (sizeof(vA[1]) == 1)
@@ -2088,8 +2171,9 @@ elseif (sizeof(vA[1]) == 8)
 end
 ```
 
-## Question 084
-Extract all the contiguous `3x3` blocks from a random `5x5` matrix. (★★★)
+## Pregunta 084
+
+Extraiga todos los bloques `3x3` contiguos de una matriz `5x5` aleatoria. (★★★)
 
 ````julia
 numRows = 5;
@@ -2111,8 +2195,9 @@ mB = [mA[ii:(ii + winReach), jj:(jj + winReach)] for ii in 1:(numRows - winReach
  [9 4 6; 4 2 1; 2 9 8]  [4 6 2; 2 1 7; 9 8 1]  [6 2 2; 1 7 1; 8 1 4]
 ````
 
-## Question 085
-Create a 2D array struct such that `mA[i, j] == mA[j, i]` (Symmetric matrix). (★★★)
+## Pregunta 085
+
+Cree una estructura de matriz 2D tal que `ma[i, j] == ma[j, i]` (es una matriz simétrica). (★★★)
 
 ````julia
 struct SymmetricMatrix{T <: Number} <: AbstractArray{T, 2}
@@ -2151,11 +2236,12 @@ mA
  5  0
 ````
 
-## Question 086
-Consider a set of `p` matrices of shape `nxn` and a set of `p` vectors with length `n`. Compute the sum of of the `p` matrix vector products at once (Result is a vector of length `n`). (★★★)
+## Pregunta 086
+
+Considere un conjunto de matrices `P` de forma `nxn` y un conjunto de vectores `P` con longitud `n`. Calcule la suma de los productos vectoriales de matriz `P` a la vez (el resultado es un vector de longitud `n`). (★★★)
 
 ````julia
-# One could use `TensorOperations.jl` or `Einsum.jl` for a more elegant solution.
+# Uno podría usar `tensoroperations.jl` o` einsum.jl` para una solución más elegante.
 
 numRows = 5;
 numMat  = 3;
@@ -2179,10 +2265,11 @@ vA == vB
 true
 ````
 
-## Question 087
-Consider a `16x16` array, calculate the block sum (Block size is `4x4`). (★★★)
+## Pregunta 087
 
-We solve a more general case for any size of blocks.
+Considere una matriz `16x16`, calcule la suma del bloque (el tamaño del bloque es `4x4`). (★★★)
+
+Resolvemos un caso más general para cualquier tamaño de bloques.
 
 ````julia
 numRows = 16;
@@ -2199,7 +2286,7 @@ numBlocks       = numBlocksVert * numBlocksHori;
 mA = reshape(mA, vBlockSize[1], :);
 ````
 
-We number the blocks column wise and create their block index per column of the reshaped `mA`.
+Numeramos la columna de bloques en cuanto a la columna y creamos su índice de bloque por columna del `Ma` reestructurado.
 
 ````julia
 vBlockIdx = 1:numBlocks;
@@ -2237,8 +2324,9 @@ vB
  3.3257368418156616
 ````
 
-## Question 088
-Implement the simulation _Game of Life_ using arrays. (★★★)
+## Pregunta 088
+
+Implemente la simulación del _Juego de la Vida_ usando matrices. (★★★)
 
 ````julia
 numRows = 20;
@@ -2254,7 +2342,7 @@ mG = zeros(UInt8, numRows, numCols);
 mG[vI] .= UInt8(1);
 mB = similar(mG);
 
-heatmap(mG) #<! Initialization
+heatmap(mG) #<! Initialización
 ````
 
 ````
@@ -2300,10 +2388,11 @@ heatmap(mG) #<! Final state
        1                 20         
 ````
 
-TODO: Use O(1) implementation for Box Blur.
+TODO: Use la implementación O(1) para el Box Blur.
 
-## Question 089
-Get the `n` largest values of an array. (★★★)
+## Pregunta 089
+
+Obtenga el valor más grande de una matriz. (★★★)
 
 ````julia
 vA = rand(10);
@@ -2319,8 +2408,9 @@ vA[partialsortperm(vA, 1:numValues, rev = true)]
  0.8445471427655805
 ````
 
-## Question 090
-Given an arbitrary number of vectors, build the _Cartesian Product_ (Every combinations of every item). (★★★)
+## Pregunta 090
+
+Dado un número arbitrario de vectores, construya el _producto cartesiano_ (para cada combinación de cada elemento). (★★★)
 
 ````julia
 function CartesianProduct(tupleX)
@@ -2350,31 +2440,33 @@ CartesianProduct((vA, vB, vC))
  (3, 9, 5)
 ````
 
-## Question 091
-Create an array which can be accessed like a _record array_ in _NumPy_. (★★★)
+## Pregunta 091
 
-One could use `StructArrays.jl`.
+Cree una matriz a la que se pueda acceder como una matriz de registros en Numpy. (★★★)
 
-## Question 092
-Consider a large vector `vA`, compute `vA` to the power of 3 using 3 different methods. (★★★)
+Se puede usar `StructArrays.jl`.
+
+## Pregunta 092
+
+Considere un gran vector `VA`, calcule 'VA` elevado (cada elemento) a la 3ra potencia utilizando 3 métodos diferentes. (★★★)
 
 ````julia
 vA = rand(1000);
 ````
 
-Method 001:
+Método 001:
 
 ````julia
 vB = vA .^ 3;
 ````
 
-Method 002:
+Método 002:
 
 ````julia
 vC = [valA ^ 3 for valA in vA];
 ````
 
-Method 003:
+Método 003:
 
 ````julia
 vD = zeros(length(vA));
@@ -2391,10 +2483,11 @@ vB ≈ vC ≈ vD
 true
 ````
 
-## Question 093
-Consider two arrays `mA` and `mB` of shape `8x3` and `2x2`. Find rows of `mA` that contain elements of each row of `mB` regardless of the order of the elements in `mB`. (★★★)
+## Pregunta 093
 
-The way I interpret the question is rows in `mA` which contain at least 1 element from each row of `mB`.
+Considere dos matrices `mA` y `mB` de tamaños `8x3` y `2x2`. Encuentre filas de `mA` que contengan elementos de cada fila de `mB` independientemente del orden de los elementos en `mB`. (★★★)
+
+La forma en que interpreto la pregunta son las filas en `ma` que contienen al menos 1 elemento de cada fila de 'mB`.
 
 ````julia
 mA = rand(0:4, 8, 3);
@@ -2415,7 +2508,7 @@ vD = [all(vC) for vC in eachcol(mC)]
  1
 ````
 
-In order to have a solution without the intermediate array `mC`
+Para tener una solución sin la matriz intermedia `mc`
 
 ````julia
 function Iterate2(iA; iterState = missing)
@@ -2447,8 +2540,9 @@ vD == vE
 true
 ````
 
-## Question 094
-Considering a `10x3` matrix, extract rows with unequal values. (★★★)
+## Pregunta 094
+
+Teniendo en cuenta una matriz `10x3`, extraiga filas con valores desiguales. (★★★)
 
 ````julia
 mA = rand(1:3, 10, 3);
@@ -2469,14 +2563,16 @@ vD = [maximum(vA) != minimum(vA) for vA in eachrow(mA)]
  1
 ````
 
-## Question 095
+## Pregunta 095
+
+Convierta un vector de enteros en una representación binaria de matriz. (★★★)
 Convert a vector of ints into a matrix binary representation. (★★★)
 
 ````julia
 vA = rand(UInt8, 10);
 mB = zeros(Bool, length(vA), 8);
 
-# See https://discourse.julialang.org/t/26663
+# Ver https://discourse.julialang.org/t/26663
 for ii in 1:length(vA)
     vS = bitstring(vA[ii]);
     for jj in 1:size(mB, 2)
@@ -2501,24 +2597,25 @@ mB
  1  0  0  0  0  1  0  0
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 mB = reverse!(reduce(hcat, digits.(vA, base = 2, pad = 8))', dims = 2);
 ````
 
-## Question 096
-Given a two dimensional array, extract unique rows. (★★★)
+## Pregunta 096
+
+Dada una matriz bidimensional, extraiga las filas únicas. (★★★)
 
 ````julia
 mA = UInt8.(rand(1:3, 10, 3));
 
-vS = [reduce(*, bitstring(valA) for valA in vA) for vA in eachrow(mA)]; #<! Supports any array!
+vS = [reduce(*, bitstring(valA) for valA in vA) for vA in eachrow(mA)]; #<! Funciona para todo arreglo!
 vU = unique(vS);
 vI = [findfirst(valU .== vS) for valU in vU];
 ````
 
-An alternative way:
+Una forma alternativa:
 
 ````julia
 vB = indexin(vU, vS);
@@ -2529,15 +2626,16 @@ vB == vI
 true
 ````
 
-## Question 097
-Considering 2 vectors `vA` and `vB`, write the einsum equivalent (Using `Einsum.jl`) of inner, outer, sum, and mul function. (★★★)
+## Pregunta 097
+
+Considerando 2 vectores `vA` y `vB`, escriba el equivalente de Einsum (usando `Einsum.jl`) de la funciónes `inner`, `outer`, `sum` y `mul`. (★★★)
 
 ````julia
 vA = rand(5);
 vB = rand(5);
 ````
 
-Inner Product
+Producto interno
 
 ````julia
 @tullio tullioVal = vA[ii] * vB[ii];
@@ -2548,7 +2646,7 @@ tullioVal ≈ dot(vA, vB) #<! Inner product
 true
 ````
 
-Outer  Product
+Producto exterior
 
 ````julia
 @tullio mTullio[ii, jj] := vA[ii] * vB[jj]; #<! Outer product
@@ -2559,7 +2657,7 @@ mTullio ≈ vA * vB'
 true
 ````
 
-Sum
+Sums
 
 ````julia
 @tullio tullioVal = vA[ii];
@@ -2570,7 +2668,7 @@ tullioVal ≈ sum(vA) #<! Sum
 true
 ````
 
-Multiplication
+Multiplicación
 
 ````julia
 @tullio vTullio[ii] := vA[ii] * vB[ii];
@@ -2581,10 +2679,11 @@ vTullio ≈ vA .* vB #<! Multiplication
 true
 ````
 
-## Question 098
-Considering a path described by two vectors `vX` and `vY`, sample it using equidistant samples. (★★★)
+## Pregunta 098
 
-The way I interpreted the question is to create sub segments of the same length.
+Teniendo en cuenta una ruta descrita por dos vectores `vX` y `vY`, muestréelo utilizando muestras equidistantes. (★★★)
+
+La forma en que interpreté la pregunta es crear sub segmentos de la misma longitud.
 
 ````julia
 numPts      = 100;
@@ -2663,11 +2762,12 @@ hP
        0                                     10              
 ````
 
-**Remark**: In order to be mathematically accurate the resolution of `vRSegment` must be high enough to be an integer factor of each segment.
-It can be done if the resolution is `1 / (prod(vR))` which is easily infeasible with `Float64`. So this is a good enough approximation.
+**Observación**: Para ser matemáticamente preciso, la resolución de `vRSegment` debe ser lo suficientemente alta como para ser un factor entero de cada segmento.
+Se puede hacer si la resolución es `1 / (Prod (vR))` que es fácilmente intractable con `Float64`. Así que esta es una aproximación lo suficientemente buena.
 
-## Question 099
-Given an integer `n` and a 2D array `mA`, find the rows which can be interpreted as draws from a multinomial distribution with `n` (Rows which only contain integers and which sum to `n`). (★★★)
+## Pregunta 099
+
+Dado un entero `n` y una matriz 2D `mA`, encuentre las filas que pueden interpretarse como extraídas de una distribución multinomial con `n` (filas que solo contienen enteros y que suma a `n`). (★★★)
 
 ````julia
 mA = rand([0, 0.5, 1, 2, 3], 15, 3);
@@ -2675,8 +2775,9 @@ sumVal = 4;
 vI = [all(vA .== round.(vA)) && sum(vA) == sumVal for vA in eachrow(mA)];
 ````
 
-## Question 100
-Compute bootstrapped `95%` confidence intervals for the mean of a 1D array `vA`. Namely, resample the elements of an array with replacement `N` times, compute the mean of each sample and then compute percentiles over the means. (★★★)
+## Pregunta 100
+
+Calcule los intervalos de confianza `95%` para la media de una matriz 1D 'vA'. A saber, vuelva a muestrear los elementos de una matriz con tiempos de reemplazo `n`, calcule la media de cada muestra y luego calcule los percentiles sobre los medios. (★★★)
 
 ````julia
 numTrials   = 10000;
