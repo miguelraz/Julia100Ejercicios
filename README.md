@@ -2442,30 +2442,31 @@ CartesianProduct((vA, vB, vC))
 
 ## Pregunta 091
 
-Create an array which can be accessed like a _record array_ in _NumPy_. (★★★)
+Cree una matriz a la que se pueda acceder como una matriz de registros en Numpy. (★★★)
 
-One could use `StructArrays.jl`.
+Se puede usar `StructArrays.jl`.
 
 ## Pregunta 092
-Consider a large vector `vA`, compute `vA` to the power of 3 using 3 different methods. (★★★)
+
+Considere un gran vector `VA`, calcule 'VA` elevado (cada elemento) a la 3ra potencia utilizando 3 métodos diferentes. (★★★)
 
 ````julia
 vA = rand(1000);
 ````
 
-Method 001:
+Método 001:
 
 ````julia
 vB = vA .^ 3;
 ````
 
-Method 002:
+Método 002:
 
 ````julia
 vC = [valA ^ 3 for valA in vA];
 ````
 
-Method 003:
+Método 003:
 
 ````julia
 vD = zeros(length(vA));
@@ -2483,9 +2484,10 @@ true
 ````
 
 ## Pregunta 093
-Consider two arrays `mA` and `mB` of shape `8x3` and `2x2`. Find rows of `mA` that contain elements of each row of `mB` regardless of the order of the elements in `mB`. (★★★)
 
-The way I interpret the question is rows in `mA` which contain at least 1 element from each row of `mB`.
+Considere dos matrices `mA` y `mB` de tamaños `8x3` y `2x2`. Encuentre filas de `mA` que contengan elementos de cada fila de `mB` independientemente del orden de los elementos en `mB`. (★★★)
+
+La forma en que interpreto la pregunta son las filas en `ma` que contienen al menos 1 elemento de cada fila de 'mB`.
 
 ````julia
 mA = rand(0:4, 8, 3);
@@ -2506,7 +2508,7 @@ vD = [all(vC) for vC in eachcol(mC)]
  1
 ````
 
-In order to have a solution without the intermediate array `mC`
+Para tener una solución sin la matriz intermedia `mc`
 
 ````julia
 function Iterate2(iA; iterState = missing)
@@ -2539,7 +2541,8 @@ true
 ````
 
 ## Pregunta 094
-Considering a `10x3` matrix, extract rows with unequal values. (★★★)
+
+Teniendo en cuenta una matriz `10x3`, extraiga filas con valores desiguales. (★★★)
 
 ````julia
 mA = rand(1:3, 10, 3);
@@ -2561,13 +2564,15 @@ vD = [maximum(vA) != minimum(vA) for vA in eachrow(mA)]
 ````
 
 ## Pregunta 095
+
+Convierta un vector de enteros en una representación binaria de matriz. (★★★)
 Convert a vector of ints into a matrix binary representation. (★★★)
 
 ````julia
 vA = rand(UInt8, 10);
 mB = zeros(Bool, length(vA), 8);
 
-# See https://discourse.julialang.org/t/26663
+# Ver https://discourse.julialang.org/t/26663
 for ii in 1:length(vA)
     vS = bitstring(vA[ii]);
     for jj in 1:size(mB, 2)
@@ -2592,24 +2597,25 @@ mB
  1  0  0  0  0  1  0  0
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 mB = reverse!(reduce(hcat, digits.(vA, base = 2, pad = 8))', dims = 2);
 ````
 
 ## Pregunta 096
-Given a two dimensional array, extract unique rows. (★★★)
+
+Dada una matriz bidimensional, extraiga las filas únicas. (★★★)
 
 ````julia
 mA = UInt8.(rand(1:3, 10, 3));
 
-vS = [reduce(*, bitstring(valA) for valA in vA) for vA in eachrow(mA)]; #<! Supports any array!
+vS = [reduce(*, bitstring(valA) for valA in vA) for vA in eachrow(mA)]; #<! Funciona para todo arreglo!
 vU = unique(vS);
 vI = [findfirst(valU .== vS) for valU in vU];
 ````
 
-An alternative way:
+Una forma alternativa:
 
 ````julia
 vB = indexin(vU, vS);
@@ -2621,14 +2627,15 @@ true
 ````
 
 ## Pregunta 097
-Considering 2 vectors `vA` and `vB`, write the einsum equivalent (Using `Einsum.jl`) of inner, outer, sum, and mul function. (★★★)
+
+Considerando 2 vectores `vA` y `vB`, escriba el equivalente de Einsum (usando `Einsum.jl`) de la funciónes `inner`, `outer`, `sum` y `mul`. (★★★)
 
 ````julia
 vA = rand(5);
 vB = rand(5);
 ````
 
-Inner Product
+Producto interno
 
 ````julia
 @tullio tullioVal = vA[ii] * vB[ii];
@@ -2639,7 +2646,7 @@ tullioVal ≈ dot(vA, vB) #<! Inner product
 true
 ````
 
-Outer  Product
+Producto exterior
 
 ````julia
 @tullio mTullio[ii, jj] := vA[ii] * vB[jj]; #<! Outer product
@@ -2650,7 +2657,7 @@ mTullio ≈ vA * vB'
 true
 ````
 
-Sum
+Sums
 
 ````julia
 @tullio tullioVal = vA[ii];
@@ -2661,7 +2668,7 @@ tullioVal ≈ sum(vA) #<! Sum
 true
 ````
 
-Multiplication
+Multiplicación
 
 ````julia
 @tullio vTullio[ii] := vA[ii] * vB[ii];
@@ -2673,9 +2680,10 @@ true
 ````
 
 ## Pregunta 098
-Considering a path described by two vectors `vX` and `vY`, sample it using equidistant samples. (★★★)
 
-The way I interpreted the question is to create sub segments of the same length.
+Teniendo en cuenta una ruta descrita por dos vectores `vX` y `vY`, muestréelo utilizando muestras equidistantes. (★★★)
+
+La forma en que interpreté la pregunta es crear sub segmentos de la misma longitud.
 
 ````julia
 numPts      = 100;
@@ -2754,11 +2762,12 @@ hP
        0                                     10              
 ````
 
-**Remark**: In order to be mathematically accurate the resolution of `vRSegment` must be high enough to be an integer factor of each segment.
-It can be done if the resolution is `1 / (prod(vR))` which is easily infeasible with `Float64`. So this is a good enough approximation.
+**Observación**: Para ser matemáticamente preciso, la resolución de `vRSegment` debe ser lo suficientemente alta como para ser un factor entero de cada segmento.
+Se puede hacer si la resolución es `1 / (Prod (vR))` que es fácilmente intractable con `Float64`. Así que esta es una aproximación lo suficientemente buena.
 
 ## Pregunta 099
-Given an integer `n` and a 2D array `mA`, find the rows which can be interpreted as draws from a multinomial distribution with `n` (Rows which only contain integers and which sum to `n`). (★★★)
+
+Dado un entero `n` y una matriz 2D `mA`, encuentre las filas que pueden interpretarse como extraídas de una distribución multinomial con `n` (filas que solo contienen enteros y que suma a `n`). (★★★)
 
 ````julia
 mA = rand([0, 0.5, 1, 2, 3], 15, 3);
@@ -2767,7 +2776,8 @@ vI = [all(vA .== round.(vA)) && sum(vA) == sumVal for vA in eachrow(mA)];
 ````
 
 ## Pregunta 100
-Compute bootstrapped `95%` confidence intervals for the mean of a 1D array `vA`. Namely, resample the elements of an array with replacement `N` times, compute the mean of each sample and then compute percentiles over the means. (★★★)
+
+Calcule los intervalos de confianza `95%` para la media de una matriz 1D 'vA'. A saber, vuelva a muestrear los elementos de una matriz con tiempos de reemplazo `n`, calcule la media de cada muestra y luego calcule los percentiles sobre los medios. (★★★)
 
 ````julia
 numTrials   = 10000;
