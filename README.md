@@ -13,6 +13,7 @@ Para generar este archivo:
 using Literate;
 Literate.markdown("Julia100Exercises.jl", name = "README", execute = true, flavor = Literate.CommonMarkFlavor());
 ```
+Si quieres contribuir a este reto, ayúdanos a traducir el archivo base `Julia100Exercises.jl`.
 
 **Remark**: Tested with Julia `1.8.2`.
 
