@@ -1545,7 +1545,8 @@ false
 ````
 
 ## Pregunta 061
-Find the 2nd nearest value from a given value in an array. (★★☆)
+
+Encuentre el segundo valor más cercano de un valor dado en una matriz. (★★ ☆)
 
 ````julia
 inputVal = 0.5;
@@ -1558,7 +1559,7 @@ vA[sortperm(abs.(vA .- inputVal))[2]]
 0.5947029703004421
 ````
 
-Alternative way (More efficient)
+Alternative form (more efficient)
 
 ````julia
 closeFirst  = Inf;
@@ -1566,7 +1567,7 @@ closeSecond = Inf;
 closeFirstIdx  = 0;
 closeSecondIdx = 0;
 
-# Using `global` for scope in Literate
+# usando scope/alcance global en Literate.jl:
 for (elmIdx, elmVal) in enumerate(abs.(vA .- inputVal))
     if (elmVal < closeFirst)
         global closeSecond = closeFirst;
@@ -1586,7 +1587,7 @@ vA[closeSecondIdx] == vA[sortperm(abs.(vA .- inputVal))[2]]
 true
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 vA[partialsortperm(abs.(vA .- inputVal), 2)]
@@ -1597,7 +1598,8 @@ vA[partialsortperm(abs.(vA .- inputVal), 2)]
 ````
 
 ## Pregunta 062
-Considering two arrays with shape `(1, 3)` and `(3, 1)`, Compute their sum using an iterator. (★★☆)
+
+Teniendo en cuenta dos matrices con forma `(1, 3)` y `(3, 1)`, calcule su suma usando un iterador. (★★ ☆)
 
 ````julia
 vA = rand(1, 3);
@@ -1611,12 +1613,14 @@ sum(aVal + bVal for aVal in vA, bVal in vB)
 ````
 
 ## Pregunta 063
-Create an array class that has a name attribute. (★★☆)
 
-One could use `NamedArrays.jl` or `AxisArrays.jl`.
+Cree una tipo de matriz que tenga un atributo de nombre. (★★ ☆)
+
+Puedes usar `NamedArrays.jl` o `AxisArrays.jl`.
 
 ## Pregunta 064
-Given a vector, add `1` to each element indexed by a second vector (Be careful with repeated indices). (★★★)
+
+Dado un vector, agregue `1` a cada elemento indexado por un segundo vector (tenga cuidado con los índices repetidos). (★★★)
 
 ````julia
 vA = rand(1:10, 5);
@@ -1624,7 +1628,7 @@ vB = rand(1:5, 3);
 
 println(vA);
 
-# Julia is very efficient with loops
+# Julia es muy eficiente con los bucles!
 for bIdx in vB
     vA[bIdx] += 1;
 end
@@ -1639,7 +1643,8 @@ println(vA);
 ````
 
 ## Pregunta 065
-Accumulate elements of a vector `X` to an array `F` based on an index list `I`. (★★★)
+
+Acumular elementos de un vector `x` a una matriz `f` basada en una lista de índices 'I'. (★★★)
 
 ````julia
 vX = rand(1:5, 10);
@@ -1664,10 +1669,11 @@ vF: [0.0, 5.0, 5.0, 0.0, 2.0, 3.0, 0.0, 0.0, 0.0, 5.0, 10.0, 7.0]
 
 ````
 
-One could also use `counts()` from `StatsBase.jl`.
+También se podría usar `counts()` de `StatsSase.jl`.
 
 ## Pregunta 066
-Considering an image of size `w x h x 3` image of type `UInt8`, compute the number of unique colors. (★★☆)
+
+Teniendo en cuenta una imagen de la imagen de tamaño `w x h x 3` del tipo `UInt8`, calcule el número de colores únicos. (★★ ☆)
 
 ````julia
 mI = rand(UInt8, 1000, 1000, 3);
@@ -1680,7 +1686,7 @@ print("Number of Unique Colors: $numColors");
 Number of Unique Colors: 970711
 ````
 
-Another option:
+Otra opción:
 
 ````julia
 numColors = length(unique([UInt32(iPx[1]) + UInt32(iPx[2]) << 8 + UInt32(iPx[3]) << 16 for iPx in eachrow(reshape(mI, :, 3))]));
@@ -1691,7 +1697,7 @@ print("Number of Unique Colors: $numColors");
 Number of Unique Colors: 970711
 ````
 
-Simpler way to slice a pixel:
+Forma más simple de slicear un píxel:
 
 ````julia
 numColors = length(unique([UInt32(mI[ii, jj, 1]) + UInt32(mI[ii, jj, 2]) << 8 + UInt32(mI[ii, jj, 3]) << 16 for ii in 1:size(mI, 1), jj in 1:size(mI, 2)]));
@@ -1703,7 +1709,8 @@ Number of Unique Colors: 970711
 ````
 
 ## Pregunta 067
-Considering a four dimensions array, get sum over the last two axis at once. (★★★)
+
+Teniendo en cuenta una matriz de cuatro dimensiones, obtenga una suma sobre los dos últimos ejes a la vez. (★★★)
 
 ````julia
 mA = rand(2, 2, 2, 2);
@@ -1718,10 +1725,12 @@ sum(reshape(mA, (2, 2, :)), dims = 3)
 ````
 
 ## Pregunta 068
+
+Teniendo en cuenta un vector `VA` unidimensional, muestra cómo calcular los promedios de subconjuntos de 'VA` utilizando un vector `VS` del mismo tamaño que describe los índices de subconjunto. (★★★)
 Considering a one dimensional vector `vA`, how to compute means of subsets of `vA` using a vector `vS` of same size describing subset indices. (★★★)
 
 ````julia
-# Bascially extending `Q0065` with another vector of number of additions.
+# Básicamente extendiendo `Q0065` con otro vector de número de adiciones.
 
 vX = rand(1:5, 10);
 vI = rand(1:15, 10);
@@ -1753,7 +1762,8 @@ vF: [0.0, 5.0, 0.0, 0.0, 1.0, 0.0, 4.0, 4.0, 0.0, 1.5, 0.0, 0.0, 2.0, 4.0]
 ````
 
 ## Pregunta 069
-Get the diagonal of a matrix product. (★★★)
+
+Obtenga la diagonal de un producto de matriz. (★★★)
 
 ````julia
 mA = rand(5, 7);
@@ -1771,7 +1781,7 @@ vD = [dot(mA[ii, :], mB[:, ii]) for ii in 1:numDiagElements]
  2.2065505485118653
 ````
 
-Alternative way:
+Forma alternativa:
 
 ````julia
 vD = reshape(sum(mA[1:numDiagElements, :]' .* mB[:, 1:numDiagElements], dims = 1), numDiagElements)
@@ -1786,12 +1796,12 @@ vD = reshape(sum(mA[1:numDiagElements, :]' .* mB[:, 1:numDiagElements], dims = 1
 ````
 
 ## Pregunta 070
-Consider the vector `[1, 2, 3, 4, 5]`, build a new vector with 3 consecutive zeros interleaved between each value. (★★★)
+Considere el vector `[1, 2, 3, 4, 5]`, construya un nuevo vector con 3 ceros consecutivos intercalados entre cada valor. (★★★)
 
 ````julia
 vA = 1:5;
 
-# Since Julia is fast with loops, it would be the easiest choice
+# Dado que Julia es rápida con los bucles, sería la elección más fácil:
 
 numElements = (4 * length(vA)) - 3;
 vB = zeros(Int, numElements);
@@ -1815,7 +1825,8 @@ println(vB);
 ````
 
 ## Pregunta 071
-Consider an array of dimension `5 x 5 x 3`, mulitply it by an array with dimensions `5 x 5` using broadcasting. (★★★)
+
+Considere una matriz de dimensión `5 x 5 x 3`, mulitplyly por una matriz con dimensiones` 5 x 5` usando transmisión. (★★★)
 
 ````julia
 mA = rand(5, 5, 3);
