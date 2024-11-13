@@ -41,7 +41,7 @@ import LinearAlgebra as LA;
 
 ## Pregunta 002
 
-Print the version of Julia. (★☆☆)
+Imprime la versión de Julia. (★☆☆)
 
 ````julia
 println(VERSION);
@@ -52,6 +52,7 @@ println(VERSION);
 ````
 
 ## Pregunta 003
+
 Cree un vector no inicializado de tamaño 10 de `Float64`. (★ ☆☆)
 
 ````julia
