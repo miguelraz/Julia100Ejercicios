@@ -812,10 +812,11 @@ vA[findall(in(vB), vA)]
 
 Suprimir las advertencias ("warnings") de Julia. (★ ☆☆)
 
-One could use [Suppressor.jl](https://github.com/JuliaIO/Suppressor.jl).
+Uno puede usar [Suppressor.jl](https://github.com/JuliaIO/Suppressor.jl).
 
 ## Pregunta 032
-Compare `sqrt(-1)` and `sqrt(-1 + 0im)`. (★☆☆)
+
+Compare `sqrt(-1)` y `sqrt(-1 + 0im)`. (★ ☆☆)
 
 ````julia
 try
@@ -839,7 +840,8 @@ sqrt(-1 + 0im)
 ````
 
 ## Pregunta 033
-Display yesterday, today and tomorrow's date. (★☆☆)
+
+Muestra la fecha de ayer, hoy y de mañana usando `Dates`. (★ ☆☆)
 
 ````julia
 println("Yesterday: $(today() - Day(1))");
@@ -855,7 +857,8 @@ Tomorrow: 2022-10-28
 ````
 
 ## Pregunta 034
-Display all the dates corresponding to the month of July 2016. (★★☆)
+
+Muestre todas las fechas correspondientes al mes de julio de 2016. (★★ ☆)
 
 ````julia
 collect(Date(2016,7,1):Day(1):Date(2016,7,31))
@@ -897,7 +900,8 @@ collect(Date(2016,7,1):Day(1):Date(2016,7,31))
 ````
 
 ## Pregunta 035
-Compute `((mA + mB) * (-mA / 2))` in place. (★★☆)
+
+Calcule `((mA + mB) * (-mA / 2))` de manera in place. (★★☆)
 
 ````julia
 mA = rand(2, 2);
@@ -911,20 +915,21 @@ mA .= ((mA .+ mB) .* (.-mA ./ 2))
  -0.510546  -0.444504
 ````
 
-Using the dot macro:
+Usando el macro "punto":
 
 ````julia
 @. mA = ((mA + mB) * (-mA / 2));
 ````
 
 ## Pregunta 036
-Extract the integer part of a random array of positive numbers using 4 different methods. (★★☆)
+
+Extraiga la parte entera de una matriz aleatoria de números positivos utilizando 4 métodos diferentes. (★★ ☆)
 
 ````julia
 mA = 5 * rand(3, 3);
 ````
 
-Option 1:
+Opción 1:
 
 ````julia
 floor.(mA)
@@ -937,7 +942,8 @@ floor.(mA)
  0.0  3.0  3.0
 ````
 
-Option 2:
+Opción2:
+
 
 ````julia
 round.(mA .- 0.5) #<! Generates -0.0 for numbers smaller than 0.5
@@ -950,7 +956,7 @@ round.(mA .- 0.5) #<! Generates -0.0 for numbers smaller than 0.5
  -0.0  3.0  3.0
 ````
 
-Option 3:
+Opción 3:
 
 ````julia
 mA .÷ 1
@@ -963,7 +969,7 @@ mA .÷ 1
  0.0  3.0  3.0
 ````
 
-Option 4:
+Opción 4:
 
 ````julia
 mA .- rem.(mA, 1)
@@ -977,7 +983,8 @@ mA .- rem.(mA, 1)
 ````
 
 ## Pregunta 037
-Create a `5x5` matrix with row values ranging from 0 to 4. (★★☆)
+
+Cree una matriz `5x5` con valores de columna que van de 0 a 4. (★★ ☆)
 
 ````julia
 mA = repeat(reshape(0:4, 1, 5), 5, 1)
@@ -992,14 +999,15 @@ mA = repeat(reshape(0:4, 1, 5), 5, 1)
  0  1  2  3  4
 ````
 
-One could also generate _row like_ range using tranpose:
+También se podría generar el rango de fila usando _transpose_ `'`:
 
 ````julia
 mA = repeat((0:4)', 5, 1);
 ````
 
 ## Pregunta 038
-Generate an array using a generator of 10 numbers. (★☆☆)
+
+Genere una matriz de 10 números utilizando un generador. (★ ☆☆)
 
 ````julia
 vA = collect(x for x in 1:10)
@@ -1019,14 +1027,15 @@ vA = collect(x for x in 1:10)
  10
 ````
 
-In Julia the result of collect can be achieved directly using _Array Comprehension_:
+En Julia, el resultado de `collect` se puede lograr directamente utilizando una _Array Comprehension_ / _comprehensión de arreglo_:
 
 ````julia
 vA = [x for x in 1:10];
 ````
 
 ## Pregunta 039
-Create a vector of size 10 with values ranging from 0 to 1, both excluded. (★★☆)
+
+Cree un vector de tamaño 10 con valores que varían de 0 a 1, ambos excluidos. (★★ ☆)
 
 ````julia
 vA = LinRange(0, 1, 12)[2:(end - 1)]
@@ -1038,7 +1047,8 @@ vA = LinRange(0, 1, 12)[2:(end - 1)]
 ````
 
 ## Pregunta 040
-Create a random vector of size 10 and sort it. (★★☆)
+
+Cree un vector aleatorio de tamaño 10 y ordénelo. (★★ ☆)
 
 ````julia
 vA = rand(1:10, 10);
@@ -1060,7 +1070,8 @@ sort(vA) #<! Use `sort!()` for inplace sorting
 ````
 
 ## Pregunta 041
-Implement the `sum()` function manually. (★★☆)
+
+Implemente la función `sum()` manualmente. (★★ ☆)
 
 ````julia
 vA = rand(100);
@@ -1083,7 +1094,8 @@ MySum(vA)
 ````
 
 ## Pregunta 042
-Check for equality of 2 arrays. (★★☆)
+
+Verifique la igualdad de 2 matrices. (★★ ☆)
 
 ````julia
 vA = rand(10);
@@ -1096,13 +1108,14 @@ all(vA .== vB)
 false
 ````
 
-## Pregunta 043
-Make an array immutable (Read only). (★★☆)
+## Pregunta 043 TODO: Update
 
-This is a work in progress for Julia at in [Issue 31630](https://github.com/JuliaLang/julia/pull/31630).
+Haga una matriz inmutable (solo puede ser leída). (★★ ☆)
+
 
 ## Pregunta 044
-Consider a random `10x2` matrix representing cartesian coordinates, convert them to polar coordinates. (★★☆)
+
+Considere una matriz `10x2` aleatoria que representa las coordenadas cartesianas, conviértalas en coordenadas polares. (★★ ☆)
 
 ````julia
 mA = rand(10, 2);
@@ -1126,20 +1139,21 @@ mB = [ConvToPolar(vX) for vX in eachrow(mA)]
  [1.044698619009772, 0.8754548962664869]
 ````
 
-In order to have the same output size:
+Para tener el mismo tamaño de salida:
 
 ````julia
 mC = reduce(hcat, mB)';
 ````
 
 ## Pregunta 045
-Create random vector of size 10 and replace the maximum value by 0. (★★☆)
+
+Cree un vector aleatorio de tamaño 10 y reemplace el valor máximo por 0. (★★ ☆)
 
 ````julia
 vA = randn(10);
 ````
 
-In case of a single maximum or all different values:
+En caso de un solo máximo o todos los valores diferentes:
 
 ````julia
 vA[argmax(vA)] = 0;
@@ -1160,7 +1174,7 @@ vA
   0.8756142494364301
 ````
 
-General solution:
+Solución general:
 
 ````julia
 maxVal = maximum(vA);
@@ -1168,7 +1182,8 @@ vA .= (valA == maxVal ? 0 : valA for valA in vA); #<! Non allocating generator b
 ````
 
 ## Pregunta 046
-Create a a grid of `x` and `y` coordinates covering the `[0, 1] x [0, 1]` area. (★★☆)
+
+Cree una cuadrícula de coordenadas `x` y `y` que cubran el área `[0, 1] x [0, 1]`. (★★ ☆)
 
 ````julia
 numGridPts = 5;
@@ -1176,7 +1191,7 @@ vX = LinRange(0, 1, numGridPts);
 vY = LinRange(0, 1, numGridPts);
 MeshGrid = (vX, vY) -> ([x for _ in vY, x in vX], [y for y in vY, _ in vX]);
 
-mX, mY = MeshGrid(vX, vY); #<! See https://discourse.julialang.org/t/48679
+mX, mY = MeshGrid(vX, vY); #<! Ver https://discourse.julialang.org/t/48679
 @show mX
 ````
 
@@ -1202,14 +1217,15 @@ mX, mY = MeshGrid(vX, vY); #<! See https://discourse.julialang.org/t/48679
  1.0   1.0   1.0   1.0   1.0
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
 mXY = [(ii, jj) for ii in 0:0.25:1, jj in 0:0.25:1]; #<! Also `tuple.(0:0.25:1, (0:0.25:1)')`
 ````
 
 ## Pregunta 047
-Given two vectors, `vX` and `vY`, construct the Cauchy matrix `mC`: `(Cij = 1 / (xi - yj))`. (★★☆)
+
+Dados dos vectores, `vx` y` vy`, construye la matriz de Cauchy `mc`:` (c_ij = 1 / (xi - yj)) `. (★★ ☆)
 
 ````julia
 vX = rand(5);
@@ -1228,7 +1244,8 @@ mC = 1 ./ (vX .- vY')
 ````
 
 ## Pregunta 048
-Print the minimum and maximum representable value for each Julia scalar type. (★★☆)
+
+Imprima el valor mínimo y máximo representable para cada tipo escalar Julia. (★★ ☆)
 
 ````julia
 vT = [UInt8 UInt16 UInt32 UInt64 Int8 Int16 Int32 Int64 Float16 Float32 Float64]
@@ -1266,7 +1283,8 @@ Inf
 ````
 
 ## Pregunta 049
-Print all the values of an array. (★★☆)
+
+Imprima todos los valores de una matriz. (★★ ☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1278,7 +1296,8 @@ print(mA);
 ````
 
 ## Pregunta 050
-Find the closest value to a given scalar in a vector. (★★☆)
+
+Encuentre el valor más cercano a un escalar dado en un vector. (★★ ☆)
 
 ````julia
 inputVal = 0.5;
