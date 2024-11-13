@@ -1310,14 +1310,14 @@ vA[argmin(abs.(vA .- inputVal))]
 0.5023858297186229
 ````
 
-By [Tomer Arnon](https://github.com/tomerarnon):
+Por [Tomer Arnon](https://github.com/tomerarnon):
 
 ````julia
-function ClosestValue(vA::Vector{T}, inputVal::T) where{T <: Number}
+function MasCercano(vA::Vector{T}, inputVal::T) where{T <: Number}
     return argmin(y -> abs(y - inputVal), vA);
 end
 
-ClosestValue(vA, inputVal)
+MasCercano(vA, inputVal)
 ````
 
 ````
@@ -1325,7 +1325,8 @@ ClosestValue(vA, inputVal)
 ````
 
 ## Pregunta 051
-Create a structured array representing a position `(x, y)` and a color `(r, g, b)`. (★★☆)
+
+Cree una matriz estructurada que represente una posición `(x, y)` y un color `(r, g, b)`. (★★ ☆)
 
 ````julia
 struct sPosColor
@@ -1343,7 +1344,8 @@ vMyColor    = [sPosColor(rand(1:maxVal, 2)..., rand(UInt8, 4)...) for _ in 1:num
 ````
 
 ## Pregunta 052
-Consider a random vector with shape `(5, 2)` representing coordinates, find the distances matrix `mD`: $ {D}_{i, j} = {\left\| {x}_{i} - {x}_{j} \right\|}_{2} $. (★★☆)
+
+Considere un vector aleatorio de forma `(5, 2)` que representa coordenadas. Encuentre la matriz de distancias `mD`: ${D}_{i, j} = {\left\| {x}_{i} - {x}_{j}\right\|}_{2} $. (★★ ☆)
 
 ````julia
 mX = rand(5, 2);
@@ -1362,7 +1364,8 @@ mD #<! Apply `sqrt.()` for the actual norm
 ````
 
 ## Pregunta 053
-Convert a float (32 bits) array into an integer (32 bits) in place. (★★☆)
+
+Convierta una matriz flotante (32 bits) en un entero (32 bits) en su lugar. (★★ ☆)
 
 ````julia
 vA = 9999 .* rand(Float32, 5);
@@ -1379,7 +1382,7 @@ vB = reinterpret(Int32, vA); #<! Creates a view
  9953
 ````
 
-The above is equivalent of:
+Lo anterior es equivalente a:
 ```julia
 for ii in eachindex(vB)
     vB[ii] = trunc(Int32, vA[ii]);
@@ -1388,7 +1391,8 @@ vB
 ```
 
 ## Pregunta 054
-Read the following file (`Q0054.txt`). (★★☆)
+
+Lea el siguiente archivo: (`Q0054.txt`). (★★☆)
 ```
 1, 2, 3, 4, 5
 6,  ,  , 7, 8
@@ -1407,7 +1411,8 @@ mA = readdlm("Q0054.txt", ',')
 ````
 
 ## Pregunta 055
-Enumerate array in a loop. (★★☆)
+
+Enumerar una matriz con un bucle. (★★☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1441,7 +1446,8 @@ end
 ````
 
 ## Pregunta 056
-Generate a generic 2D Gaussian like array with `μ = 0`, `σ = 1` and indices over `{-5, -4, ..., 0, 1, ..., 5}`. (★★☆)
+
+Genere una matriz Gaussiana 2D genérica con `μ = 0`, `σ = 1` e índices sobre `{-5, -4, ..., 0, 1, ..., 5}`. (★★ ☆)
 
 ````julia
 vA = -5:5;
@@ -1464,7 +1470,7 @@ heatmap(mG)
        1        11               
 ````
 
-Using the separability of the Gaussian function:
+Usando la separabilidad de la función gaussiana:
 
 ````julia
 vG = (1 / (sqrt(2 * pi) * σ)) .* exp.(-0.5 .* (((vA .- μ) .^ 2) / (σ * σ)));
@@ -1472,21 +1478,23 @@ mG = vG * vG';
 ````
 
 ## Pregunta 057
-Place `5` elements in a `5x5` array randomly. (★★☆)
+
+Coloque 5 elementos en una matriz `5x5` al azar. (★★ ☆)
 
 ````julia
 mA = rand(5, 5);
 mA[rand(1:25, 5)] = rand(5);
 ````
 
-Another option which avoids setting into the same indices:
+Otra opción que evita repetir índices:
 
 ````julia
 mA[randperm(25)[1:5]] = rand(5);
 ````
 
 ## Pregunta 058
-Subtract the mean of each row of a matrix. (★★☆)
+
+Resta la media de cada fila de una matriz. (★★ ☆)
 
 ````julia
 mA = rand(3, 3);
@@ -1500,7 +1508,8 @@ mean(mA, dims = 1)
 ````
 
 ## Pregunta 059
-Sort an array by a column. (★★☆)
+
+Ordene una matriz por una columna. (★★ ☆)
 
 ````julia
 colIdx = 2;
@@ -1516,14 +1525,15 @@ mA[sortperm(mA[:, colIdx]), :]
  0.271644  0.722126  0.182457
 ````
 
-Using `sortslices()`:
+Usando `sortslices()`:
 
 ````julia
 sortslices(mA, dims = 1, by = x -> x[colIdx]);
 ````
 
 ## Pregunta 060
-Tell if a given 2D array has null (All zeros) columns. (★★☆)
+
+Encontrar si una matriz 2D dada tiene columnas nulas (todas ceros). (★★ ☆)
 
 ````julia
 mA = rand(0:1, 3, 9);
