@@ -1826,7 +1826,7 @@ println(vB);
 
 ## Pregunta 071
 
-Considere una matriz de dimensión `5 x 5 x 3`, mulitplyly por una matriz con dimensiones` 5 x 5` usando transmisión. (★★★)
+Considere una matriz de dimensión `5 x 5 x 3`, mulitpliquela por una matriz con dimensiones `5 x 5` usando `broadcasting`. (★★★)
 
 ````julia
 mA = rand(5, 5, 3);
@@ -1860,7 +1860,8 @@ mA .* mB #<! Very easy in Julia
 ````
 
 ## Pregunta 072
-Swap two rows of a 2D array. (★★★)
+
+Intercambie dos filas de una matriz 2D. (★★★)
 
 ````julia
 mA = rand(UInt8, 3, 2);
@@ -1876,7 +1877,8 @@ UInt8[0xbf 0x8f; 0xc7 0x2f; 0xac 0x2a]
 ````
 
 ## Pregunta 073
-Consider a set of 10 triplets describing 10 triangles (with shared vertices), find the set of unique line segments composing all the triangles. (★★★)
+
+Considere un conjunto de 10 tripletas que describen 10 triángulos (con vértices compartidos), encuentre el conjunto de segmentos de línea únicos que componen todos los triángulos. (★★★)
 
 ````julia
 mA = rand(0:100, 10, 3); #<! Each row composes 3 veritces ([1] -> [2], [2] -> [3], [3] -> [1])
@@ -1919,7 +1921,8 @@ mC = unique(mC)
 ````
 
 ## Pregunta 074
-Given a sorted array `vC` that corresponds to a bincount, produce an array `vA` such that `bincount(vA) == vC`. (★★★)
+
+Dada una matriz ordenada `VC` que corresponde a un bindount, produce una matriz `VA` tal que `bincount(VA) == VC`. (★★★)
 
 ````julia
 vC = rand(0:7, 5);
@@ -1927,7 +1930,7 @@ numElements = sum(vC);
 vA = zeros(Int, numElements);
 
 elmIdx = 1;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for (ii, binCount) in enumerate(vC)
     for jj in 1:binCount
         vA[elmIdx] = ii;
@@ -1937,7 +1940,8 @@ end
 ````
 
 ## Pregunta 075
-Compute averages using a sliding window over an array. (★★★)
+
+Calcule promedios utilizando una ventana deslizante sobre una matriz. (★★★)
 
 ````julia
 numElements = 10;
@@ -1949,14 +1953,14 @@ vA = rand(0:3, numElements);
 vB = zeros(numElements - (2 * winRadius));
 
 aIdx = 1 + winRadius;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 1:length(vB)
     vB[ii] = mean(vA[(aIdx - winRadius):(aIdx + winRadius)]); #<! Using integral / running sum it would be faster.
     global aIdx += 1;
 end
 ````
 
-Another method using running sum:
+Otro método que usa la suma corriente:
 
 ````julia
 vC = zeros(numElements - winReach);
@@ -1966,7 +1970,7 @@ sumVal = sum(vA[1:winLength]);
 vC[jj] = sumVal / winLength;
 jj += 1;
 
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 2:(numElements - winReach)
     global sumVal += vA[ii + winReach] - vA[ii - 1];
     vC[jj] = sumVal / winLength;
@@ -1981,7 +1985,8 @@ true
 ````
 
 ## Pregunta 076
-Consider a one dimensional array `vA`, build a two dimensional array whose first row is `[ vA[0], vA[1], vA[2] ]`  and each subsequent row is shifted by 1. (★★★)
+
+Considere una matriz unidimensional `VA`, construya una matriz bidimensional cuya primera fila es `[VA [0], VA [1], VA [2]]` y cada fila posterior se desplaza por 1. (★★★)
 
 ````julia
 vA = rand(10);
@@ -1996,7 +2001,8 @@ end
 ````
 
 ## Pregunta 077
-Negate a boolean or to change the sign of a float inplace. (★★★)
+
+Niega un booleano o  multiplica por `-1` para cambiar el valor de un número de manera in place.
 
 ````julia
 vA = rand(Bool, 10);
@@ -2007,11 +2013,12 @@ vA .*= -1;
 ````
 
 ## Pregunta 078
-Consider 2 sets of points `mP1`, `mP2` describing lines (2d) and a point `vP`, how to compute distance from the point `vP` to each line `i`: `[mP1[i, :], mP2[i, :]`. (★★★)
+
+Considere 2 conjuntos de puntos `mp1`,`mp2` describiendo líneas en 2D y un punto `vp`. Calcula la distancia desde el punto `vP` a cada línea `i`:` [mp1[i,:], mp2[i,:]]`. (★★★)
 
 ````julia
-# See distance of a point from a line in Wikipedia (https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line).
-# Specifically _Line Defined by Two Points_.
+# Ver distancia de un punto desde una línea en Wikipedia (https://en.wikipedia.org/wiki/distance_from_a_point_to_a_line).
+# Específicamente _line definido por dos puntos_.
 
 numLines = 10;
 mP1 = randn(numLines, 2);
@@ -2030,7 +2037,8 @@ Min Distance: 0.42811311783896533
 ````
 
 ## Pregunta 079
-Consider 2 sets of points `mP1`, `mP2` describing lines (2d) and a set of points `mP`, how to compute distance from the point `vP = mP[j, :]` to each line `i`: `[mP1[i, :], mP2[i, :]`. (★★★)
+
+Considere 2 conjuntos de puntos `mP1`, `mP2` que describan líneas 2D y un conjunto de puntos `mp`, calcular la distancia desde el punto `vp = mp[j,:]` a cada línea `i`: `[mp1[i,:], mp2[i,:]]`. (★★★)
 
 ````julia
 numLines = 5;
@@ -2058,10 +2066,11 @@ The minimum distance from the 5 -th point: 0.0701461047753776
 ````
 
 ## Pregunta 080
-Consider an arbitrary 2D array, write a function that extract a subpart with a fixed shape and centered on a given element (Handel out of bounds). (★★★)
+
+Considere una matriz 2D arbitraria, escriba una función que extraiga una subparte con una forma fija y se centre en un elemento dado (Handel fuera de los límites). (★★★)
 
 ````julia
-# One could use `PaddedViews.jl` to easily solve this.
+# Uno podría usar `paddedviews.jl` para resolverlo fácilmente.
 
 arrayLength = 10;
 winRadius   = 3;
@@ -2072,7 +2081,7 @@ winLength = (2 * winRadius) + 1;
 mB = zeros(winLength, winLength);
 
 verShift = -winRadius;
-# Using `global` for scope in Literate
+# Usando `global` para alcance en alfabetizado
 for ii in 1:winLength
     horShift = -winRadius;
     for jj in 1:winLength
@@ -2084,7 +2093,8 @@ end
 ````
 
 ## Pregunta 081
-Consider an array `vA = [1, 2, 3, ..., 13, 14]`, generate an array `vB = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], ..., [11, 12, 13, 14]]`. (★★★)
+
+Considere una matriz `VA = [1, 2, 3, ..., 13, 14]`, genere una matriz `vb = [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], ..., [11, 12, 13, 14]] `.. (★★★)
 
 ````julia
 vA = collect(1:14);
@@ -2111,7 +2121,8 @@ vB = [vA[ii:(ii + winReach)] for ii in 1:(length(vA) - winReach)]
 ````
 
 ## Pregunta 082
-Compute a matrix rank. (★★★)
+
+Calcule un rango de matriz. (★★★)
 
 ````julia
 numRows = 5;
@@ -2125,6 +2136,7 @@ rank(mA)
 ````
 
 ## Pregunta 083
+
 Find the most frequent value in an array. (★★★)
 
 ````julia
@@ -2135,18 +2147,17 @@ MATLAB Style (Manual loop might be faster)
 
 ````julia
 vB = unique(vA);
-# vB[argmax(sum(vA .== vB', dims = 1)[:])] #<! The input to `argmax()` is a `1 x n` vector, hence squeezed so `argmax()` won't return Cartesian Index.
-vB[argmax(dropdims(sum(vA .== vB', dims = 1), dims = 1))] #<! The input to `argmax()` is a `1 x n` vector, hence squeezed so `argmax()` won't return Cartesian Index.
+# vb[argMax(suma(VA.==vb', dims = 1)[:])] # <! La entrada a `argMax ()` es un vector `1 x n`, por lo tanto, se reduce su ultima dimension, por lo que `argmax()` no devolverá el índice cartesiano.
 ````
 
 ````
 1
 ````
 
-Comparing bits:
+Comparación de bits:
 
-One could convert at the bits level to integers and then use something like `counts()` from `StatsBase.jl`.
-Support to 1:4 bytes of data:
+Uno podría convertirse en el nivel de bits a enteros y luego usar algo como `counts()` de `StatsBase.jl`.
+Con 1 a 4 bytes de datos:
 ```julia
 numBytes = sizeof(vA[1]);
 if (sizeof(vA[1]) == 1)
@@ -2161,7 +2172,8 @@ end
 ```
 
 ## Pregunta 084
-Extract all the contiguous `3x3` blocks from a random `5x5` matrix. (★★★)
+
+Extraiga todos los bloques `3x3` contiguos de una matriz `5x5` aleatoria. (★★★)
 
 ````julia
 numRows = 5;
@@ -2184,7 +2196,8 @@ mB = [mA[ii:(ii + winReach), jj:(jj + winReach)] for ii in 1:(numRows - winReach
 ````
 
 ## Pregunta 085
-Create a 2D array struct such that `mA[i, j] == mA[j, i]` (Symmetric matrix). (★★★)
+
+Cree una estructura de matriz 2D tal que `ma[i, j] == ma[j, i]` (es una matriz simétrica). (★★★)
 
 ````julia
 struct SymmetricMatrix{T <: Number} <: AbstractArray{T, 2}
@@ -2224,10 +2237,11 @@ mA
 ````
 
 ## Pregunta 086
-Consider a set of `p` matrices of shape `nxn` and a set of `p` vectors with length `n`. Compute the sum of of the `p` matrix vector products at once (Result is a vector of length `n`). (★★★)
+
+Considere un conjunto de matrices `P` de forma `nxn` y un conjunto de vectores `P` con longitud `n`. Calcule la suma de los productos vectoriales de matriz `P` a la vez (el resultado es un vector de longitud `n`). (★★★)
 
 ````julia
-# One could use `TensorOperations.jl` or `Einsum.jl` for a more elegant solution.
+# Uno podría usar `tensoroperations.jl` o` einsum.jl` para una solución más elegante.
 
 numRows = 5;
 numMat  = 3;
@@ -2252,9 +2266,10 @@ true
 ````
 
 ## Pregunta 087
-Consider a `16x16` array, calculate the block sum (Block size is `4x4`). (★★★)
 
-We solve a more general case for any size of blocks.
+Considere una matriz `16x16`, calcule la suma del bloque (el tamaño del bloque es `4x4`). (★★★)
+
+Resolvemos un caso más general para cualquier tamaño de bloques.
 
 ````julia
 numRows = 16;
@@ -2271,7 +2286,7 @@ numBlocks       = numBlocksVert * numBlocksHori;
 mA = reshape(mA, vBlockSize[1], :);
 ````
 
-We number the blocks column wise and create their block index per column of the reshaped `mA`.
+Numeramos la columna de bloques en cuanto a la columna y creamos su índice de bloque por columna del `Ma` reestructurado.
 
 ````julia
 vBlockIdx = 1:numBlocks;
@@ -2310,7 +2325,8 @@ vB
 ````
 
 ## Pregunta 088
-Implement the simulation _Game of Life_ using arrays. (★★★)
+
+Implemente la simulación del _Juego de la Vida_ usando matrices. (★★★)
 
 ````julia
 numRows = 20;
@@ -2326,7 +2342,7 @@ mG = zeros(UInt8, numRows, numCols);
 mG[vI] .= UInt8(1);
 mB = similar(mG);
 
-heatmap(mG) #<! Initialization
+heatmap(mG) #<! Initialización
 ````
 
 ````
@@ -2372,10 +2388,11 @@ heatmap(mG) #<! Final state
        1                 20         
 ````
 
-TODO: Use O(1) implementation for Box Blur.
+TODO: Use la implementación O(1) para el Box Blur.
 
 ## Pregunta 089
-Get the `n` largest values of an array. (★★★)
+
+Obtenga el valor más grande de una matriz. (★★★)
 
 ````julia
 vA = rand(10);
@@ -2392,7 +2409,8 @@ vA[partialsortperm(vA, 1:numValues, rev = true)]
 ````
 
 ## Pregunta 090
-Given an arbitrary number of vectors, build the _Cartesian Product_ (Every combinations of every item). (★★★)
+
+Dado un número arbitrario de vectores, construya el _producto cartesiano_ (para cada combinación de cada elemento). (★★★)
 
 ````julia
 function CartesianProduct(tupleX)
@@ -2423,6 +2441,7 @@ CartesianProduct((vA, vB, vC))
 ````
 
 ## Pregunta 091
+
 Create an array which can be accessed like a _record array_ in _NumPy_. (★★★)
 
 One could use `StructArrays.jl`.
