@@ -2,11 +2,10 @@
 
 # 100 Ejercicios de Julia con soluciones
 
-A set of introductory exercises for Julia. Based on [100 NumPy Exercises](https://github.com/rougier/numpy-100).
 Una serie de ejercicios introductorios a Julia. Basado en [100 NumPy Exercises](https://github.com/rougier/numpy-100).
 
 
-In order to generate this file:
+Para generar este archivo:
 1. Clone el repositorio (o descargarlo).
  2. Active e instanciar el proyecto.
 3. Run:
